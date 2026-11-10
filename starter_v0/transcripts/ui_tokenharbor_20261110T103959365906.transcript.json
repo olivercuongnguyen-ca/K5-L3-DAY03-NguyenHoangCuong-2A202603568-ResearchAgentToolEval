@@ -1,0 +1,239 @@
+{
+  "transcript_id": "ui_tokenharbor_20261110T103959365906",
+  "version": "ui",
+  "artifact_version": "ui+pf0c107a9d7a1+t8db0ba629f52",
+  "prompt_hash": "f0c107a9d7a14032c948d642d7c36f2a85cb6d69a099530093a874c94d472446",
+  "tools_hash": "8db0ba629f52ad1ec171bae4e4e84472c12f950fa1a6db5e1d27bad6e749b740",
+  "provider": "tokenharbor",
+  "model": "deepseek-v4.1-flash:free",
+  "created_at": "2026-11-10T10:39:59",
+  "updated_at": "2026-11-10T10:56:58",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T10:56:15",
+      "user": "hi",
+      "status": "answered",
+      "assistant_text": "Hey! What can I help you with today?\n\nA few things I can do right away:\n- Pull recent posts from an account\n- Search social media or the web for a topic\n- Find and summarize papers\n- Check internal policy docs\n- Draft or send something out\n\nJust tell me what you need and I'll take care of it.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Hey! What can I help you with today?\n\nA few things I can do right away:\n- Pull recent posts from an account\n- Search social media or the web for a topic\n- Find and summarize papers\n- Check internal policy docs\n- Draft or send something out\n\nJust tell me what you need and I'll take care of it.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-11-10T10:56:27"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-11-10T10:56:34",
+      "user": "Search the web for latest news about OpenAI",
+      "status": "answered",
+      "assistant_text": "Here's what's making news on OpenAI right now:\n\n**Funding — $11B raised at a $1.25T valuation**\nOpenAI closed on roughly $11 billion in new funding as the first tranche of a round valuing the company at $1.25 trillion. It's a notable scale-back: the company had originally targeted $30B+ at a $1.4–1.5T valuation. SoftBank and MGX participated, and the round could reach ~$20B total in coming weeks. The pullback tracks a broader cooling in AI-sector sentiment.\n- [Bloomberg](https://www.bloomberg.com/news/articles/2026-11-06/openai-completes-11-billion-portion-of-funding-at-1-25-trillion-value) · [Reuters](https://www.reuters.com/business/openai-secures-11-billion-funding-125-trillion-valuation-bloomberg-news-reports-2026-11-06) · [TechCrunch](https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation) · [Yahoo Finance](https://finance.yahoo.com/technology/ai/articles/openai-completes-11-billion-portion-205841010.html)\n\n**Data centers — OpenAI sticks with its buildout after election backlash**\nCFO Sarah Friar said the company will keep investing in AI infrastructure despite voters rejecting pro-data-center measures. Out of 41 local ballot measures across 10 states, all but one went against development or backed restrictions. OpenAI reaffirmed a pledge to cover the full cost of powering its data centers.\n- [CNBC (CFO comments)](https://www.cnbc.com/2026/11/06/open-ai-data-centers-election.html) · [CNBC (power commitment)](https://www.cnbc.com/2026/11/05/openai-to-pay-for-data-center-power-after-election-shows-ai-concern.html)\n\n**Security — GPT‑6 Cyber and an agentic vuln-hunting pipeline**\nOpenAI introduced GPT‑6 Cyber, a model trained to find and validate exploitable vulnerabilities while staying within researcher-set scope. In a related writeup, the company said an agentic pipeline run using an upcoming cyber model reproduced 1,724 vulnerabilities in 30 hours and generated 948 working local privilege escalation exploits for a commonly used Linux distro.\n- [OpenAI: GPT‑6 Cyber](https://openai.com/index/introducing-gpt-6-cyber) · [OpenAI: \"A thousand fewer paths to root\"](https://openai.com/index/a-thousand-fewer-paths-to-root) · [The Hacker News](https://thehackernews.com/2026/11/openai-ai-pipeline-generates-948-linux.html)\n\n**Also of note**\nOpenAI's ~$11B figure landed the same day reports surfaced that Anthropic IPO buyers are eyeing valuations as low as $1.1T, down from ~$2T expectations a month ago — a signal that the AI trade is being repriced across the board. OpenAI has also been active on M&A (Ona, Promptfoo, Astral Software, OpenClaw among recent deals) and rolled out ChatGPT Enterprise on AWS Marketplace ([summary source](https://tavily.com/knowledge/company/p4PyTakV77G9)).\n\nWant me to dig deeper into any one of these, or pull together a formatted digest?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "",
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "OpenAI latest news",
+                "topic": "news",
+                "timeframe": "week",
+                "max_results": 10
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "OpenAI latest news",
+                "topic": "news",
+                "timeframe": "week",
+                "max_results": 10
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "OpenAI latest news",
+                "topic": "news",
+                "timeframe": "week",
+                "items": [
+                  {
+                    "title": "OpenAI Completes $11 Billion Portion of Funding at $1.25 Trillion Value - Bloomberg",
+                    "url": "https://www.bloomberg.com/news/articles/2026-11-06/openai-completes-11-billion-portion-of-funding-at-1-25-trillion-value",
+                    "source": "bloomberg.com",
+                    "summary": "OpenAI has closed on new funding of $11 billion, the initial part of a round that values the company at $1.25 trillion, according to people familiar with the matter.  \nThe funding was wired to the company as of Friday, said the people, who spoke on condition of anonymity as the information is not public. The remainder of the round, which could increase to as much as $20 billion in total, is expected to be completed in the coming weeks, one person said. [...] The AI developer has been in talks for more than a month to raise a large funding round after delaying its plans for an initial public offering. OpenAI initially set out to raise $30 billion or more at a $1.4 trillion valuation, Bloomberg News has reported, before scaling back its plans amid a public market rout for the AI sector.  \nOpenAI declined to comment. The Wall Street Journal previously reported some details of the funding. [...] The reduced funding goals represent a stark shift for a fundraising juggernaut that helped usher in the current AI boom. The sentiment around AI has also changed dramatically since the round kicked off, due to concerns about the spending spree on physical infrastructure for artificial intelligence and the potential for new roadblocks to data center construction following the US midterm elections.  \nOpenAI raised $122 billion in a March funding round at an $852 billion valuation.",
+                    "score": 0.77650476
+                  },
+                  {
+                    "title": "OpenAI Completes $11 Billion Portion of Funding at $1.25 Trillion Value",
+                    "url": "https://finance.yahoo.com/technology/ai/articles/openai-completes-11-billion-portion-205841010.html",
+                    "source": "finance.yahoo.com",
+                    "summary": "(Bloomberg) -- OpenAI has closed on new funding of roughly $11 billion, the initial part of a round that values the company at $1.25 trillion, according to people familiar with the matter.The funding was wired to the company as of Friday, said the people, who spoke on condition of anonymity as the information is not public. The remainder of the round, which could increase to as much as $20 billion in total, is expected to be completed in the coming weeks, one person said.The AI developer has [...] AI developer has been in talks for more than a month to raise a large funding round after delaying its plans for an initial public offering. OpenAI initially set out to raise $30 billion or more at a $1.4 trillion valuation, Bloomberg News has reported, before scaling back its plans amid a public market rout for the AI sector.OpenAI declined to comment. The Wall Street Journal previously reported some details of the funding. The reduced funding goals represent a stark shift for a fundraising [...] 1. Crypto\n\n   Crypto\n2. AI\n\n   AI\n\nTrending \n\n Jobs report latest\n Stock market today\n Tesla winds down Cybertruck\n Retail investors flee\n\nBloomberg\n\n# OpenAI Completes $11 Billion Portion of Funding at $1.25 Trillion Value\n\nOpenAI plans to raise up to $20 billion in the round. · Bloomberg · Bloomberg\n\nNatasha Mascarenhas and Rebecca Torrence\n\n2 min read\n\n OPAI.PVT",
+                    "score": 0.7738498
+                  },
+                  {
+                    "title": "OpenAI gets $11 billion funding at $1.25 trillion valuation, source says | Reuters",
+                    "url": "https://www.reuters.com/business/openai-secures-11-billion-funding-125-trillion-valuation-bloomberg-news-reports-2026-11-06",
+                    "source": "reuters.com",
+                    "summary": "Nov 6 (Reuters) - OpenAI has closed ‌on new funding of $11 billion, the initial part of a round ​that values the company ​at $1.25 trillion, a source familiar with ⁠the matter said on Friday.\n\nThe $11 ​billion raised so far represents ​only a portion of OpenAI's original target of up to $30 billion, while ​the company's valuation has ​come down from the $1.5 trillion level it ‌had ⁠initially sought, two investors said. [...] The Reuters Daily Briefing newsletter provides all the news you need to start your day. Sign up here.\n\nAdvertisement · Scroll to continue\n\nSoftBank and MGX participated in the funding, the investors said.\n\nBloomberg News reported ​on the ​funding ⁠earlier on Friday.\n\nSentiment toward AI companies has ​cooled in the last ​month, ⁠with some investors valuing rival Anthropic's planned IPO at about $1.5 ⁠trillion, ​below earlier expectations ​of roughly $2 trillion. [...] Reporting by Prathik Jayaprakash in ​Bengaluru; Editing by Leroy Leo\n\nOur Standards: The Thomson Reuters Trust Principles.",
+                    "score": 0.7507177
+                  },
+                  {
+                    "title": "OpenAI",
+                    "url": "https://tavily.com/knowledge/company/p4PyTakV77G9",
+                    "source": "tavily.com",
+                    "summary": "# OpenAI\nID: p4PyTakV77G9\nWebsite: www.openai.com\nHeadquarters: San Francisco, CA, United States\nLinkedIn: www.linkedin.com/company/openai · 11,529,792 followers\nIndustry: Research Services\nIndustry codes: SIC 87, 873, NAICS 54, 541\nCompany type: Partnership\nSocial profiles: www.facebook.com/openai, www.twitter.com/openai, www.crunchbase.com/organization/openai, www.instagram.com/openai.gpt, www.instagram.com/openai, www.youtube.com/@openai, www.youtube.com/openai, github.com/openai [...] ## M&A\n- Ona (2026-06-01)\n- Tomoro AI (2026-05-01)\n- Hiro Finance (2026-04-01)\n- TBPN (2026-04-01)\n- Promptfoo, Inc. (2026-03-01)\n- Astral Software Inc (2026-03-01)\n- OpenClaw (2026-02-01)\n- Torch Health Inc (2026-01-01): 100.00M USD [...] - Last round: Debt Financing 2026-07-01 520.00M USD\n- Debt Financing 2026-07-01 520.00M USD\n- Secondary Market 2026-04-01 75.00M USD\n- Venture Round 2026-03-01 122.00B USD\n- Venture Round 2025-12-01 1.00B USD\n- Venture Round 2025-09-01 10.00B USD\n- Venture Round 2025-08-01\n- Venture Round 2025-03-01 40.00B USD\n- Debt Financing 2024-10-01 4.00B USD\n- Venture Round 2024-10-01 6.60B USD\n- Venture Round 2024-04-01\n- Secondary Market 2024-02-01\n- Secondary Market 2023-12-01",
+                    "score": 0.7458619
+                  },
+                  {
+                    "title": "OpenAI AI Pipeline Generates 948 Linux Root Escalation Exploits in 30-Hour Run",
+                    "url": "https://thehackernews.com/2026/11/openai-ai-pipeline-generates-948-linux.html",
+                    "source": "thehackernews.com",
+                    "summary": "\"Our prototype identified and analyzed 2,308 candidate Linux kernel findings, dynamically reproduced 1,724 vulnerabilities, and produced 948 local privilege escalation (LPE) exploits that could allow an unprivileged local user to gain root access,\" the AI company said.\n\nThe findings build upon 24 LPE exploits that OpenAI revealed were discovered by its GPT‑5.5‑Cyber model back in June 2026. The latest research turns this process into an agentic pipeline comprising five stages - [...] Get the Latest News in Your Inbox\n\nGet the latest news, expert insights, exclusive resources, and strategies from industry leaders, all for free.\n\n- [x] - [x] \n\nEmail \n\nConnect with us!\n\n__ 2,500,000 Followers\n\n__ 745,000 Followers\n\n__ 26,200 Subscribers\n\n__ 198,000 Followers\n\n__ 1,889,000 Followers\n\nImage 47: Google News Icon 95,000 Followers\n\nCompany\n\n   About THN\n   Advertise with us\n   Contact\n\nPages\n\n   Webinars\n   Awards\n   Privacy Policy\n\n__ RSS Feeds__ Contact Us [...] \"In a run in mid-October 2026, our pipeline using an upcoming cyber model dynamically reproduced 1,724 vulnerabilities [within 30 hours] and generated PoCs for 291 information leak vulnerabilities and 948 working local privilege escalation (LPE) exploits for a commonly used Linux distribution,\" OpenAI said.\n\nImage 4: Cybersecurity",
+                    "score": 0.73138535
+                  },
+                  {
+                    "title": "OpenAI to pay for data center power after election shows AI concern",
+                    "url": "https://www.cnbc.com/2026/11/05/openai-to-pay-for-data-center-power-after-election-shows-ai-concern.html",
+                    "source": "cnbc.com",
+                    "summary": "OpenAI has repeatedly pledged to protect ratepayers and invest in local communities this year, and Lehane said the company's latest commitments build on many of its previous initiatives. He said the policy blueprint has been in the works since August, and that he met with dozens of lawmakers and candidates since then. [...] OpenAI reaffirmed its promise to pay the full cost of powering data centers as part of a series of commitments the company published Thursday, two days after voters at the polls roundly rejected the rapid expansion of AI. [...] AI companies like OpenAI depend on AI data centers to serve customers and develop new models, and they're seeking to build out as rapidly as possible to meet demand. In February, OpenAI told investors that it's targeting $600 billion in total compute spend by 2030, and the company has since announced massive data center projects in Georgia and Ohio.",
+                    "score": 0.7244226
+                  },
+                  {
+                    "title": "OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation | TechCrunch",
+                    "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation",
+                    "source": "techcrunch.com",
+                    "summary": "The news comes only hours after Bloomberg also reported that potential buyers of shares in the IPO of OpenAI’s chief competitor, Anthropic, are eyeing a substantially lower valuation than Anthropic had targeted. Bloomberg writes that some potential buyers believe Anthropic’s valuation could be as low as $1.1 trillion, compared with the $2 trillion that investors were said to be expecting roughly a month ago. [...] Bloomberg reported on the new funding on Friday, citing sources familiar with the matter. The $11 billion is part of a larger funding round that hasn’t closed yet, according to the outlet. The round is expected to close in the coming weeks and could total about $20 billion, a source told Bloomberg.\n\nIn late September, Bloomberg reported that OpenAI was looking to raise $30 billion in the upcoming round. The current figures fall well short of that target. [...] Posted:\n\n# OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation\n\nOpenAI has reportedly raised $11 billion so far in a new funding round that values the AI lab at $1.25 trillion.",
+                    "score": 0.69249696
+                  },
+                  {
+                    "title": "OpenAI will keep investing in AI data centers despite election results, CFO tells CNBC",
+                    "url": "https://www.cnbc.com/2026/11/06/open-ai-data-centers-election.html",
+                    "source": "cnbc.com",
+                    "summary": "Investors have turned skeptical on the AI trade of late due to a combination of higher borrowing costs, concerns about soaring debt and public backlash towards the industry. The Nasdaq on Thursday suffered its steepest drop in 19 months, led by a plunge in shares of the chipmakers and neoclouds most closely tied to the AI buildout.\n\nThis is breaking news. Please refresh for updates. [...] OpenAI CFO Sarah Friar on Friday said the company will continue to invest in artificial intelligence infrastructure, even after voters strongly rebuked data centers during Tuesday's midterm elections. [...] Out of 41 local ballot measures across 10 states, voters backed restrictions or rejected pro-development measures for all but one, according to an analysis by Ballotpedia and additional results gathered by CNBC on Wednesday. Opposition to the facilities mounted swiftly over the summer as Americans grew worried about their potential to harm the environment raise utility bills and contribute to job loss.",
+                    "score": 0.6844544
+                  },
+                  {
+                    "title": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
+                    "url": "https://openai.com/index/introducing-gpt-6-cyber",
+                    "source": "openai.com",
+                    "summary": "New users and organizations can apply for Daybreak⁠ and get started with our cyber skills, products, and partners⁠.\n\n   Codex\n   Cybersecurity\n\n## Author\n\nOpenAI\n\n## Keep reading\n\nView all\n\nImage 2: ChatGPT Enterprise now available in AWS Marketplace — Cover\n\nChatGPT Enterprise now available in AWS Marketplace Product Nov 9, 2026\n\nImage 3: Partnering with Hacktron to find vulnerabilities in OpenAI’s systems — Cover\n\nPartnering with Hacktron to strengthen OpenAI’s security Security Nov 6, 2026 [...] Skip to main content\n\n\n\nLog inTry ChatGPT(opens in a new window)\n\n   Research\n   Products\n   Business\n   Developers\n   Company\n   Foundation(opens in a new window)\n\nTry ChatGPT(opens in a new window)Login\n\nOpenAI\n\nImage 1\n\nNovember 5, 2026\n\nProductSecuritySafety\n\n# GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents\n\nA cybersecurity model trained to find and validate exploitable vulnerabilities, while staying within the scope that researchers set. [...] (opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)\n\nOpenAI © 2015–2026 Your privacy choices\n\nEnglish United States",
+                    "score": 0.6320719
+                  },
+                  {
+                    "title": "A thousand fewer paths to root",
+                    "url": "https://openai.com/index/a-thousand-fewer-paths-to-root",
+                    "source": "openai.com",
+                    "summary": "Every generation of models should help us build software that the next generation finds harder to compromise. We will continue working towards building a secure Internet that anyone can joyfully build on.\n\n   2026\n\n## Author\n\nOpenAI\n\n## Keep reading\n\nView all\n\nImage 5: Partnering with Hacktron to find vulnerabilities in OpenAI’s systems — Cover\n\nPartnering with Hacktron to strengthen OpenAI’s security Security Nov 6, 2026\n\nImage 6: BioBasicsBench — Cover [...] (opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)\n\nOpenAI © 2015–2026 Your privacy choices\n\nEnglish United States [...] Skip to main content\n\n\n\nLog inTry ChatGPT(opens in a new window)\n\n   Research\n   Products\n   Business\n   Developers\n   Company\n   Foundation(opens in a new window)\n\nA thousand fewer paths to root | OpenAI\n\nNovember 4, 2026\n\nSecurityPublication\n\n# A thousand fewer paths to root",
+                    "score": 0.62633044
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here's what's making news on OpenAI right now:\n\n**Funding — $11B raised at a $1.25T valuation**\nOpenAI closed on roughly $11 billion in new funding as the first tranche of a round valuing the company at $1.25 trillion. It's a notable scale-back: the company had originally targeted $30B+ at a $1.4–1.5T valuation. SoftBank and MGX participated, and the round could reach ~$20B total in coming weeks. The pullback tracks a broader cooling in AI-sector sentiment.\n- [Bloomberg](https://www.bloomberg.com/news/articles/2026-11-06/openai-completes-11-billion-portion-of-funding-at-1-25-trillion-value) · [Reuters](https://www.reuters.com/business/openai-secures-11-billion-funding-125-trillion-valuation-bloomberg-news-reports-2026-11-06) · [TechCrunch](https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation) · [Yahoo Finance](https://finance.yahoo.com/technology/ai/articles/openai-completes-11-billion-portion-205841010.html)\n\n**Data centers — OpenAI sticks with its buildout after election backlash**\nCFO Sarah Friar said the company will keep investing in AI infrastructure despite voters rejecting pro-data-center measures. Out of 41 local ballot measures across 10 states, all but one went against development or backed restrictions. OpenAI reaffirmed a pledge to cover the full cost of powering its data centers.\n- [CNBC (CFO comments)](https://www.cnbc.com/2026/11/06/open-ai-data-centers-election.html) · [CNBC (power commitment)](https://www.cnbc.com/2026/11/05/openai-to-pay-for-data-center-power-after-election-shows-ai-concern.html)\n\n**Security — GPT‑6 Cyber and an agentic vuln-hunting pipeline**\nOpenAI introduced GPT‑6 Cyber, a model trained to find and validate exploitable vulnerabilities while staying within researcher-set scope. In a related writeup, the company said an agentic pipeline run using an upcoming cyber model reproduced 1,724 vulnerabilities in 30 hours and generated 948 working local privilege escalation exploits for a commonly used Linux distro.\n- [OpenAI: GPT‑6 Cyber](https://openai.com/index/introducing-gpt-6-cyber) · [OpenAI: \"A thousand fewer paths to root\"](https://openai.com/index/a-thousand-fewer-paths-to-root) · [The Hacker News](https://thehackernews.com/2026/11/openai-ai-pipeline-generates-948-linux.html)\n\n**Also of note**\nOpenAI's ~$11B figure landed the same day reports surfaced that Anthropic IPO buyers are eyeing valuations as low as $1.1T, down from ~$2T expectations a month ago — a signal that the AI trade is being repriced across the board. OpenAI has also been active on M&A (Ona, Promptfoo, Astral Software, OpenClaw among recent deals) and rolled out ChatGPT Enterprise on AWS Marketplace ([summary source](https://tavily.com/knowledge/company/p4PyTakV77G9)).\n\nWant me to dig deeper into any one of these, or pull together a formatted digest?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "OpenAI latest news",
+            "topic": "news",
+            "timeframe": "week",
+            "max_results": 10
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "OpenAI latest news",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "OpenAI Completes $11 Billion Portion of Funding at $1.25 Trillion Value - Bloomberg",
+                "url": "https://www.bloomberg.com/news/articles/2026-11-06/openai-completes-11-billion-portion-of-funding-at-1-25-trillion-value",
+                "source": "bloomberg.com",
+                "summary": "OpenAI has closed on new funding of $11 billion, the initial part of a round that values the company at $1.25 trillion, according to people familiar with the matter.  \nThe funding was wired to the company as of Friday, said the people, who spoke on condition of anonymity as the information is not public. The remainder of the round, which could increase to as much as $20 billion in total, is expected to be completed in the coming weeks, one person said. [...] The AI developer has been in talks for more than a month to raise a large funding round after delaying its plans for an initial public offering. OpenAI initially set out to raise $30 billion or more at a $1.4 trillion valuation, Bloomberg News has reported, before scaling back its plans amid a public market rout for the AI sector.  \nOpenAI declined to comment. The Wall Street Journal previously reported some details of the funding. [...] The reduced funding goals represent a stark shift for a fundraising juggernaut that helped usher in the current AI boom. The sentiment around AI has also changed dramatically since the round kicked off, due to concerns about the spending spree on physical infrastructure for artificial intelligence and the potential for new roadblocks to data center construction following the US midterm elections.  \nOpenAI raised $122 billion in a March funding round at an $852 billion valuation.",
+                "score": 0.77650476
+              },
+              {
+                "title": "OpenAI Completes $11 Billion Portion of Funding at $1.25 Trillion Value",
+                "url": "https://finance.yahoo.com/technology/ai/articles/openai-completes-11-billion-portion-205841010.html",
+                "source": "finance.yahoo.com",
+                "summary": "(Bloomberg) -- OpenAI has closed on new funding of roughly $11 billion, the initial part of a round that values the company at $1.25 trillion, according to people familiar with the matter.The funding was wired to the company as of Friday, said the people, who spoke on condition of anonymity as the information is not public. The remainder of the round, which could increase to as much as $20 billion in total, is expected to be completed in the coming weeks, one person said.The AI developer has [...] AI developer has been in talks for more than a month to raise a large funding round after delaying its plans for an initial public offering. OpenAI initially set out to raise $30 billion or more at a $1.4 trillion valuation, Bloomberg News has reported, before scaling back its plans amid a public market rout for the AI sector.OpenAI declined to comment. The Wall Street Journal previously reported some details of the funding. The reduced funding goals represent a stark shift for a fundraising [...] 1. Crypto\n\n   Crypto\n2. AI\n\n   AI\n\nTrending \n\n Jobs report latest\n Stock market today\n Tesla winds down Cybertruck\n Retail investors flee\n\nBloomberg\n\n# OpenAI Completes $11 Billion Portion of Funding at $1.25 Trillion Value\n\nOpenAI plans to raise up to $20 billion in the round. · Bloomberg · Bloomberg\n\nNatasha Mascarenhas and Rebecca Torrence\n\n2 min read\n\n OPAI.PVT",
+                "score": 0.7738498
+              },
+              {
+                "title": "OpenAI gets $11 billion funding at $1.25 trillion valuation, source says | Reuters",
+                "url": "https://www.reuters.com/business/openai-secures-11-billion-funding-125-trillion-valuation-bloomberg-news-reports-2026-11-06",
+                "source": "reuters.com",
+                "summary": "Nov 6 (Reuters) - OpenAI has closed ‌on new funding of $11 billion, the initial part of a round ​that values the company ​at $1.25 trillion, a source familiar with ⁠the matter said on Friday.\n\nThe $11 ​billion raised so far represents ​only a portion of OpenAI's original target of up to $30 billion, while ​the company's valuation has ​come down from the $1.5 trillion level it ‌had ⁠initially sought, two investors said. [...] The Reuters Daily Briefing newsletter provides all the news you need to start your day. Sign up here.\n\nAdvertisement · Scroll to continue\n\nSoftBank and MGX participated in the funding, the investors said.\n\nBloomberg News reported ​on the ​funding ⁠earlier on Friday.\n\nSentiment toward AI companies has ​cooled in the last ​month, ⁠with some investors valuing rival Anthropic's planned IPO at about $1.5 ⁠trillion, ​below earlier expectations ​of roughly $2 trillion. [...] Reporting by Prathik Jayaprakash in ​Bengaluru; Editing by Leroy Leo\n\nOur Standards: The Thomson Reuters Trust Principles.",
+                "score": 0.7507177
+              },
+              {
+                "title": "OpenAI",
+                "url": "https://tavily.com/knowledge/company/p4PyTakV77G9",
+                "source": "tavily.com",
+                "summary": "# OpenAI\nID: p4PyTakV77G9\nWebsite: www.openai.com\nHeadquarters: San Francisco, CA, United States\nLinkedIn: www.linkedin.com/company/openai · 11,529,792 followers\nIndustry: Research Services\nIndustry codes: SIC 87, 873, NAICS 54, 541\nCompany type: Partnership\nSocial profiles: www.facebook.com/openai, www.twitter.com/openai, www.crunchbase.com/organization/openai, www.instagram.com/openai.gpt, www.instagram.com/openai, www.youtube.com/@openai, www.youtube.com/openai, github.com/openai [...] ## M&A\n- Ona (2026-06-01)\n- Tomoro AI (2026-05-01)\n- Hiro Finance (2026-04-01)\n- TBPN (2026-04-01)\n- Promptfoo, Inc. (2026-03-01)\n- Astral Software Inc (2026-03-01)\n- OpenClaw (2026-02-01)\n- Torch Health Inc (2026-01-01): 100.00M USD [...] - Last round: Debt Financing 2026-07-01 520.00M USD\n- Debt Financing 2026-07-01 520.00M USD\n- Secondary Market 2026-04-01 75.00M USD\n- Venture Round 2026-03-01 122.00B USD\n- Venture Round 2025-12-01 1.00B USD\n- Venture Round 2025-09-01 10.00B USD\n- Venture Round 2025-08-01\n- Venture Round 2025-03-01 40.00B USD\n- Debt Financing 2024-10-01 4.00B USD\n- Venture Round 2024-10-01 6.60B USD\n- Venture Round 2024-04-01\n- Secondary Market 2024-02-01\n- Secondary Market 2023-12-01",
+                "score": 0.7458619
+              },
+              {
+                "title": "OpenAI AI Pipeline Generates 948 Linux Root Escalation Exploits in 30-Hour Run",
+                "url": "https://thehackernews.com/2026/11/openai-ai-pipeline-generates-948-linux.html",
+                "source": "thehackernews.com",
+                "summary": "\"Our prototype identified and analyzed 2,308 candidate Linux kernel findings, dynamically reproduced 1,724 vulnerabilities, and produced 948 local privilege escalation (LPE) exploits that could allow an unprivileged local user to gain root access,\" the AI company said.\n\nThe findings build upon 24 LPE exploits that OpenAI revealed were discovered by its GPT‑5.5‑Cyber model back in June 2026. The latest research turns this process into an agentic pipeline comprising five stages - [...] Get the Latest News in Your Inbox\n\nGet the latest news, expert insights, exclusive resources, and strategies from industry leaders, all for free.\n\n- [x] - [x] \n\nEmail \n\nConnect with us!\n\n__ 2,500,000 Followers\n\n__ 745,000 Followers\n\n__ 26,200 Subscribers\n\n__ 198,000 Followers\n\n__ 1,889,000 Followers\n\nImage 47: Google News Icon 95,000 Followers\n\nCompany\n\n   About THN\n   Advertise with us\n   Contact\n\nPages\n\n   Webinars\n   Awards\n   Privacy Policy\n\n__ RSS Feeds__ Contact Us [...] \"In a run in mid-October 2026, our pipeline using an upcoming cyber model dynamically reproduced 1,724 vulnerabilities [within 30 hours] and generated PoCs for 291 information leak vulnerabilities and 948 working local privilege escalation (LPE) exploits for a commonly used Linux distribution,\" OpenAI said.\n\nImage 4: Cybersecurity",
+                "score": 0.73138535
+              },
+              {
+                "title": "OpenAI to pay for data center power after election shows AI concern",
+                "url": "https://www.cnbc.com/2026/11/05/openai-to-pay-for-data-center-power-after-election-shows-ai-concern.html",
+                "source": "cnbc.com",
+                "summary": "OpenAI has repeatedly pledged to protect ratepayers and invest in local communities this year, and Lehane said the company's latest commitments build on many of its previous initiatives. He said the policy blueprint has been in the works since August, and that he met with dozens of lawmakers and candidates since then. [...] OpenAI reaffirmed its promise to pay the full cost of powering data centers as part of a series of commitments the company published Thursday, two days after voters at the polls roundly rejected the rapid expansion of AI. [...] AI companies like OpenAI depend on AI data centers to serve customers and develop new models, and they're seeking to build out as rapidly as possible to meet demand. In February, OpenAI told investors that it's targeting $600 billion in total compute spend by 2030, and the company has since announced massive data center projects in Georgia and Ohio.",
+                "score": 0.7244226
+              },
+              {
+                "title": "OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation | TechCrunch",
+                "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation",
+                "source": "techcrunch.com",
+                "summary": "The news comes only hours after Bloomberg also reported that potential buyers of shares in the IPO of OpenAI’s chief competitor, Anthropic, are eyeing a substantially lower valuation than Anthropic had targeted. Bloomberg writes that some potential buyers believe Anthropic’s valuation could be as low as $1.1 trillion, compared with the $2 trillion that investors were said to be expecting roughly a month ago. [...] Bloomberg reported on the new funding on Friday, citing sources familiar with the matter. The $11 billion is part of a larger funding round that hasn’t closed yet, according to the outlet. The round is expected to close in the coming weeks and could total about $20 billion, a source told Bloomberg.\n\nIn late September, Bloomberg reported that OpenAI was looking to raise $30 billion in the upcoming round. The current figures fall well short of that target. [...] Posted:\n\n# OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation\n\nOpenAI has reportedly raised $11 billion so far in a new funding round that values the AI lab at $1.25 trillion.",
+                "score": 0.69249696
+              },
+              {
+                "title": "OpenAI will keep investing in AI data centers despite election results, CFO tells CNBC",
+                "url": "https://www.cnbc.com/2026/11/06/open-ai-data-centers-election.html",
+                "source": "cnbc.com",
+                "summary": "Investors have turned skeptical on the AI trade of late due to a combination of higher borrowing costs, concerns about soaring debt and public backlash towards the industry. The Nasdaq on Thursday suffered its steepest drop in 19 months, led by a plunge in shares of the chipmakers and neoclouds most closely tied to the AI buildout.\n\nThis is breaking news. Please refresh for updates. [...] OpenAI CFO Sarah Friar on Friday said the company will continue to invest in artificial intelligence infrastructure, even after voters strongly rebuked data centers during Tuesday's midterm elections. [...] Out of 41 local ballot measures across 10 states, voters backed restrictions or rejected pro-development measures for all but one, according to an analysis by Ballotpedia and additional results gathered by CNBC on Wednesday. Opposition to the facilities mounted swiftly over the summer as Americans grew worried about their potential to harm the environment raise utility bills and contribute to job loss.",
+                "score": 0.6844544
+              },
+              {
+                "title": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
+                "url": "https://openai.com/index/introducing-gpt-6-cyber",
+                "source": "openai.com",
+                "summary": "New users and organizations can apply for Daybreak⁠ and get started with our cyber skills, products, and partners⁠.\n\n   Codex\n   Cybersecurity\n\n## Author\n\nOpenAI\n\n## Keep reading\n\nView all\n\nImage 2: ChatGPT Enterprise now available in AWS Marketplace — Cover\n\nChatGPT Enterprise now available in AWS Marketplace Product Nov 9, 2026\n\nImage 3: Partnering with Hacktron to find vulnerabilities in OpenAI’s systems — Cover\n\nPartnering with Hacktron to strengthen OpenAI’s security Security Nov 6, 2026 [...] Skip to main content\n\n\n\nLog inTry ChatGPT(opens in a new window)\n\n   Research\n   Products\n   Business\n   Developers\n   Company\n   Foundation(opens in a new window)\n\nTry ChatGPT(opens in a new window)Login\n\nOpenAI\n\nImage 1\n\nNovember 5, 2026\n\nProductSecuritySafety\n\n# GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents\n\nA cybersecurity model trained to find and validate exploitable vulnerabilities, while staying within the scope that researchers set. [...] (opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)\n\nOpenAI © 2015–2026 Your privacy choices\n\nEnglish United States",
+                "score": 0.6320719
+              },
+              {
+                "title": "A thousand fewer paths to root",
+                "url": "https://openai.com/index/a-thousand-fewer-paths-to-root",
+                "source": "openai.com",
+                "summary": "Every generation of models should help us build software that the next generation finds harder to compromise. We will continue working towards building a secure Internet that anyone can joyfully build on.\n\n   2026\n\n## Author\n\nOpenAI\n\n## Keep reading\n\nView all\n\nImage 5: Partnering with Hacktron to find vulnerabilities in OpenAI’s systems — Cover\n\nPartnering with Hacktron to strengthen OpenAI’s security Security Nov 6, 2026\n\nImage 6: BioBasicsBench — Cover [...] (opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)(opens in a new window)\n\nOpenAI © 2015–2026 Your privacy choices\n\nEnglish United States [...] Skip to main content\n\n\n\nLog inTry ChatGPT(opens in a new window)\n\n   Research\n   Products\n   Business\n   Developers\n   Company\n   Foundation(opens in a new window)\n\nA thousand fewer paths to root | OpenAI\n\nNovember 4, 2026\n\nSecurityPublication\n\n# A thousand fewer paths to root",
+                "score": 0.62633044
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T10:56:58"
+    }
+  ]
+}

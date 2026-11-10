@@ -436,6 +436,263 @@
         "what_it_tests": "3 turns: yêu cầu đăng Telegram → xác nhận yes_no trước, không gọi send."
       },
       "suite": "group"
+    },
+    {
+      "id": "G01_papers_routing",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "wrong_tool",
+      "query": "Tìm paper về RAG evaluation",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "RAG evaluation"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "Tìm paper → papers, không lookup."
+      }
+    },
+    {
+      "id": "G02_papers_latest_sort",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "wrong_arg_value",
+      "query": "Tìm paper mới nhất về agents",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "agents",
+              "sort_by": "submittedDate"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "'mới nhất' → sort_by=submittedDate."
+      }
+    },
+    {
+      "id": "G03_policy_routing",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "wrong_tool",
+      "query": "Quy định nội bộ về trích dẫn nguồn là gì?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi quy định nội bộ → policy, không lookup."
+      }
+    },
+    {
+      "id": "G04_timeline_name_map",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "wrong_arg_value",
+      "query": "Cho mình 3 tweet mới nhất của Sam Altman",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sama",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "Map tên → handle sama, limit=3."
+      }
+    },
+    {
+      "id": "G05_month_news",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "wrong_arg_value",
+      "query": "Tin AI tháng này",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "AI",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "'tháng này' → timeframe=month, query chỉ từ khoá."
+      }
+    },
+    {
+      "id": "M07_paper_then_sort",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "wrong_arg_value",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm paper về RAG"
+        },
+        {
+          "role": "user",
+          "content": "Lấy cái mới nhất nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "RAG",
+              "sort_by": "submittedDate"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 2 đổi sang mới nhất, giữ chủ đề RAG."
+      }
+    },
+    {
+      "id": "M08_send_clarify",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "wrong_boundary",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Gửi cái này lên Telegram"
+        },
+        {
+          "role": "user",
+          "content": "Gửi luôn đi"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "Gửi mà chưa có nội dung/duyệt → clarify, không send."
+      }
+    },
+    {
+      "id": "M09_policy_then_area",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "wrong_tool",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Công ty có quy định gì về dữ liệu cá nhân?"
+        },
+        {
+          "role": "user",
+          "content": "Còn quy định về đăng bài ra ngoài?"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi tiếp về quy định → vẫn policy."
+      }
+    },
+    {
+      "id": "M10_topic_to_user",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "wrong_tool",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Mọi người nói gì về SpaceX trên X?"
+        },
+        {
+          "role": "user",
+          "content": "Thôi cho tweet mới nhất của Elon Musk"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "elonmusk"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 1 chủ đề SpaceX, lượt 2 chuyển sang tài khoản cụ thể."
+      }
+    },
+    {
+      "id": "M11_chit_chat_no_tool",
+      "phase": "B",
+      "suite": "group",
+      "failure_type": "unnecessary_tool",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Chào bạn"
+        },
+        {
+          "role": "user",
+          "content": "Cảm ơn nhé"
+        }
+      ],
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "skill": "group",
+        "difficulty": "medium",
+        "what_it_tests": "Chào hỏi/cảm ơn → không gọi tool."
+      }
     }
   ]
 }

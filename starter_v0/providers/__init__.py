@@ -4,6 +4,7 @@ from providers.anthropic_provider import AnthropicProvider
 from providers.gemini_provider import GeminiProvider
 from providers.ollama_provider import OllamaProvider
 from providers.deepseek_provider import DeepSeekProvider
+from providers.tokenharbor_provider import TokenHarborProvider
 
 
 def make_provider(name: str):
@@ -19,4 +20,6 @@ def make_provider(name: str):
         return OllamaProvider()
     if name == "deepseek":
         return DeepSeekProvider()
+    if name == "tokenharbor":
+        return TokenHarborProvider()
     raise ValueError(f"Unknown provider: {name}")
