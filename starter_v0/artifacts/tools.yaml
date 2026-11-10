@@ -175,3 +175,12 @@ tools:
           default: 5
           description: Maximum number of papers to retrieve (1-10).
       required: [query]
+
+  - name: cite
+    description: "Tạo trích dẫn cho một bài báo hoặc một trang web."
+    parameters: 
+      type: object
+      properties:
+        url: {type: string, default: "", description: "Địa chỉ trang web hoặc bài báo"}
+        style: {type: string, enum: [apa, harvard], default: "apa", description: "Phong cách trích dẫn"}
+      required: [url]

@@ -23,6 +23,7 @@ crypto_price_tool = TOOL_FUNCTIONS["crypto_price"]
 github_search_tool = TOOL_FUNCTIONS["github_search"]
 currency_convert_tool = TOOL_FUNCTIONS["currency_convert"]
 semantic_scholar_tool = TOOL_FUNCTIONS["semantic_scholar"]
+cite_tool = TOOL_FUNCTIONS["cite"]
 
 
 # ---------------- clarify ----------------
@@ -320,3 +321,19 @@ def test_semantic_scholar_http_error_returns_error_dict(
     assert result["tool"] == "semantic_scholar_search"
     assert result["error"] == "HTTPError"
 
+
+# ---------------- cite ----------------
+
+def test_cite_happy_path() -> None:
+    result = cite_tool(url="https://example.com/paper", style="apa")
+    assert "cited" in result["result"]
+
+
+def test_cite_bad_input_from_model() -> None:
+    result = cite_tool(url="", style="invalid_style")
+    assert "error" in result["result"]
+
+
+def test_cite_failure_returns_error_dict() -> None:
+    result = cite_tool(url="yandex.ru", style="apa")  # invalid URL format
+    assert "error" in result["result"]

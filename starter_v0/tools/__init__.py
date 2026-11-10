@@ -20,6 +20,7 @@ from .crypto_price.tool import get_crypto_price
 from .semantic_scholar.tool import semantic_scholar_search
 from .github_search.tool import search_github_repos
 from .currency_convert.tool import convert_currency
+from .cite.tool import cite_sources
 
 
 # NOTE (starter_v0): tool names here are intentionally vague. These keys are the
@@ -42,6 +43,7 @@ TOOL_FUNCTIONS = {
     "github_search": search_github_repos,
     "currency_convert": convert_currency,
     "semantic_scholar": semantic_scholar_search,
+    "cite": cite_sources,
 }
 
 

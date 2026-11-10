@@ -1,0 +1,198 @@
+{
+  "transcript_id": "v2f_deepseek_20261110T174012102361",
+  "version": "v2f",
+  "artifact_version": "v2f+pf20bd617af24+tb0bdd4523f48",
+  "prompt_hash": "f20bd617af2421da877a4e98fa292dd5c93486bf2ba1f392e42c89116ca76ad9",
+  "tools_hash": "b0bdd4523f4813af04fb2d92ebad88033bcdccc037f8a6dd165785a2bad0129a",
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "system_prompt": "C:\\Users\\Sakuya\\Documents\\Vinuni Project\\Day03-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\Sakuya\\Documents\\Vinuni Project\\Day03-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-11-10T17:40:12",
+  "updated_at": "2026-11-10T17:40:35",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T17:40:25",
+      "user": "bitcoin news today?",
+      "status": "answered",
+      "assistant_text": "Here's the Bitcoin news from today:\n\n**Market & Macro**\n- **Bitcoin lags equity rally as Fed hike odds hit 84%** — Global equity funds pulled in a record $266B over four weeks, but BTC sat out the rush. Markets now price an 84.4% chance of a quarter-point Fed hike on December 9, which pressures non-yielding assets. US spot Bitcoin ETFs saw $1.28B in net outflows from Nov 2–6. ([Yahoo Finance](https://finance.yahoo.com/markets/crypto/articles/bitcoin-sits-equity-fund-rush-085147233.html))\n- **BTC trading around $74,300**, stuck below $75,000 amid the risk-off tone. ([crypto.news](https://crypto.news/trump-media-bitcoin-holdings-q3-2026))\n\n**Corporate Treasuries & Miners**\n- **MARA sold 13,597 BTC (~$1.1B) in six weeks** and plans to keep selling — $750M went to repaying BTC-backed loans, releasing 17,477 coins from collateral. Year-to-date sales now exceed 40,000 BTC, with proceeds earmarked partly for AI infrastructure. ([CoinDesk](https://www.coindesk.com/markets/2026/11/10/bitcoin-miner-mara-sold-13-597-btc-for-usd1-1-billion-in-six-weeks-plans-to-sell-more), [BeInCrypto](https://beincrypto.com/mara-sells-13597-bitcoin-after-q3))\n- **Riot Platforms sold 79% of its Bitcoin** in three months, down to 2,418 BTC — but paired the news with a ~$28B data center lease. ([BeInCrypto](https://beincrypto.com/mara-sells-13597-bitcoin-after-q3))\n- **Trump Media added 1,510 BTC in Q3**, bringing its treasury to 15,649 BTC (~$1.17B). ([crypto.news](https://crypto.news/trump-media-bitcoin-holdings-q3-2026), [Bitcoin Foundation](https://bitcoinfoundation.org/news/bitcoin/trump-media-adds-1-510-btc-as-noteholders-near-1b-repayment-option))\n\n**Adoption**\n- **Miami-Dade County now accepts Bitcoin for property taxes** — payments are auto-converted to USD via a third-party processor, so the county never holds crypto. ([CBS Miami](https://www.cbsnews.com/miami/news/miami-dade-property-taxes-bitcoin-payment-tax-collector), [News4Jax](https://www.news4jax.com/news/local/2026/11/09/miami-dade-tax-collector-now-accepts-bitcoin-for-property-tax-payments))\n\n**Takeaway:** The dominant theme is miners and treasuries monetizing BTC to shore up balance sheets and fund AI/data-center pivots, while macro headwinds (Fed hike odds, ETF outflows) keep price capped below $75K.\n\nWant me to dig deeper into any of these — e.g., the MARA/Riot selling trend or the Fed's impact on BTC?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "",
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "bitcoin",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 8
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "bitcoin",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 8
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "bitcoin",
+                "topic": "news",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "Bitcoin Sits Out Equity Fund Rush as Fed Hike Odds Reach 84%",
+                    "url": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-sits-equity-fund-rush-085147233.html",
+                    "source": "finance.yahoo.com",
+                    "summary": "Federal Reserve building as markets weigh the 10-year Treasury yield forecast. Photo by BeInCrypto\n\n \n\nGlobal equity funds drew a record $266 billion in four weeks, per the Kobeissi Letter. Bitcoin (BTC) sat out the rush as Fed hike odds for December hit 84.4%.\n\nThat rush now meets a Fed that markets expect to tighten. Higher rates raise Treasury returns against non-yielding assets like Bitcoin, leaving BTC holders facing a second headwind.\n\n## Who Is Capturing the Equity Fund Flows? [...] However, the Fed held rates at 3.75% to 4% on October 28 in a 10 to 2 vote. Officials Lisa Cook and Beth Hammack dissented in favor of a quarter-point hike at that meeting.\n\nMeanwhile, Bitcoin lagged the Nasdaq rebound on Friday. US spot Bitcoin exchange-traded funds (ETFs) saw $1.28 billion in net outflows from November 2 to 6, the analysis said. [...] Global equity funds gained $89 billion last week, with US funds supplying $32 billion of it. As a result, four-week inflows reached a record $266 billion, the post said.\n\n## What Do 84% Fed Hike Odds Mean for Bitcoin?\n\nThe CME Group's FedWatch tool converts futures on the Fed's benchmark rate into probabilities. It shows an 84.4% chance of a quarter-point hike on December 9, with 0% assigned to a cut.",
+                    "score": 0.5132568
+                  },
+                  {
+                    "title": "Trump Media Bitcoin Holdings Reach 15,649 BTC",
+                    "url": "https://bitcoinfoundation.org/news/bitcoin/trump-media-adds-1-510-btc-as-noteholders-near-1b-repayment-option",
+                    "source": "bitcoinfoundation.org",
+                    "summary": "Price Analysis\n\n### Bitcoin in 2027: The Craziest Price Predictions from $100K to $1M\n\nThe Bitcoin price 2027 debate finds itself in unusually wide territory. Depending on whom you...\n\nIngrid Wolf Ingrid Wolf\n\n7 October 2026 •  6 min read\n\nUS Strategic Bitcoin Reserve Plans Stalled — What Happened? \n\nBitcoin News\n\n### US Strategic Bitcoin Reserve Plans Stalled — What Happened?\n\nPresident Trump has long voiced plans to create a strategic bitcoin reserve. But implementation has... [...] Nana K. Nana K.\n\n7 July 2026 •  2 min read\n\nBitcoin Price Debate Heats Up as Ray Dalio Backs Gold Over BTC \n\nBitcoin News\n\n### Bitcoin Price Debate Heats Up as Ray Dalio Backs Gold Over BTC\n\nThe Bitcoin Price debate moved back to gold after Ray Dalio questioned BTC▼$74,339.00’s...\n\nDenis O. Denis O.\n\n12 May 2026 •  3 min read [...] Denis O. Denis O.\n\n27 April 2026 •  2 min read\n\nBinance to Shut Down Crypto Mining Pool on November 10: What Miners Must Do \n\nCrypto Companies News\n\n### Binance to Shut Down Crypto Mining Pool on November 10: What Miners Must Do\n\nThe Binance Pool and other mining services provided by Binance will cease operations at 07:00 UTC...\n\nYevheny Serhiienko Yevheny Serhiienko\n\n3 weeks ago •  3 min read\n\nBitcoin in 2027: The Craziest Price Predictions from $100K to $1M \n\nPrice Analysis",
+                    "score": 0.5045508
+                  },
+                  {
+                    "title": "Q3'26 Shareholder Letter",
+                    "url": "https://www.sec.gov/Archives/edgar/data/1507605/000150760526000026/q326shareholderletter.htm",
+                    "source": "sec.gov",
+                    "summary": "price of bitcoin mined lowered revenue by\n\n$94.8 million, partially offset by an $11.7 million\n\nbenefit from higher bitcoin production.\n\nWe produced an average of 24.4 BTC per day,\n\nup from 23.3 BTC in Q3 2025, resulting in 2,247\n\nBTC mined compared to 2,144 or 5% more BTC\n\nmined year-over-year. Blocks won also\n\nincreased 2% over the same period.\n\n\\Average Price of BTC over the quarter\n\nNET INCOME\n\nWe reported net income of $632.1 million, or\n\n$1.28 per diluted share, compared to net [...] bitcoin price volatility while funding the\n\nacquisition on a non-dilutive basis.\n\nBy using our bitcoin to fund Long Ridge and\n\nthen reduce leverage, we put our digital assets\n\nto work while strengthening our balance sheet.\n\nAlongside lending and monetization, Bitcoin-\n\nbacked financing remains one more tool we\n\nhave and can use in the future to support\n\ngrowth with the same discipline. [...] Our balance sheet has to support the obligations we have today and the opportunities we are building for tomorrow. So\n\nwe manage cash, bitcoin, debt, and access to capital as parts of one balance sheet. Since the beginning of the year, we\n\nhave reduced our total debt by $1.4 billion, or 37%.\n\nWe view bitcoin as a strategic asset and a source of financial flexibility. Depending on market conditions and the expected",
+                    "score": 0.49161607
+                  },
+                  {
+                    "title": "Bitcoin miner MARA sold 13,597 BTC for $1.1 billion in six weeks, plans to sell more",
+                    "url": "https://www.coindesk.com/markets/2026/11/10/bitcoin-miner-mara-sold-13-597-btc-for-usd1-1-billion-in-six-weeks-plans-to-sell-more",
+                    "source": "coindesk.com",
+                    "summary": "It sold six times as much bitcoin in roughly six weeks as it mined during the entire third quarter.\n\nMost of the cash went straight to lenders. MARA used $750 million to repay loans secured against its bitcoin, releasing 17,477 coins it had pledged as collateral. Less than 5% of its remaining holdings are now lent out or pledged, down from 57% at September’s end. [...] Live\n\n00:05\n\n15:17\n\n15:22\n\nIt began allowing sales of newly mined bitcoin in 2025, then widened the policy this year to include its accumulated holdings. Sales reached 26,984 BTC in the first nine months of 2026. The latest disposals take the year’s total above 40,000 BTC.\n\n“We intend to continue using bitcoin to build cash for purposes such as AI infrastructure opportunities,” MARA wrote. [...] That cash also has other claims on it. Some bondholders can demand early repayment starting next year, and MARA’s board has authorized share repurchases of up to $500 million.\n\nThe shift comes as mining revenue weakens. Third-quarter revenue fell 35% to $164 million. MARA reported a $632 million profit, including an $885 million accounting gain from the rise in bitcoin’s value during the quarter.",
+                    "score": 0.484845
+                  },
+                  {
+                    "title": "Trump Media adds 1,510 Bitcoin in Q3 as treasury reaches $1.17B",
+                    "url": "https://crypto.news/trump-media-bitcoin-holdings-q3-2026",
+                    "source": "crypto.news",
+                    "summary": "The Bitcoin inheritance gap between a will and a wallet\n\nBitcoin  BTC   Bitcoin\n\nPeter Schiff warns of Bitcoin crash again as BTC misses Wall Street rebound - 12\n\nMarkets\n\n Read more - Peter Schiff warns of Bitcoin crash again as BTC misses Wall Street rebound  \n\nPeter Schiff warns of Bitcoin crash again as BTC misses Wall Street rebound\n\nBitcoin  BTC   Bitcoin\n\nWhy is Bitcoin price stuck below $75,000? - 13\n\nMarkets\n\n Read more - Why is Bitcoin price stuck below $75,000? [...] Why is Bitcoin price stuck below $75,000?\n\nBitcoin  BTC   Bitcoin\n\nSign up for crypto news and market insights\n\nGet crypto market analysis and curated news delivered right to your inbox every week.\n\nYou have successfully joined our subscriber list. [...] Bitcoin (BTC)\n\n$74,339.00   -0.02%\n\n Bitcoin price\n\nEthereum\n\nEthereum (ETH)\n\n$2,103.50   -0.49%\n\n Ethereum price\n\nXRP\n\nXRP (XRP)\n\n$1.09   -0.81%\n\n XRP price\n\nBNB\n\nBNB (BNB)\n\n$687.85   0.87%\n\n BNB price\n\nSolana\n\nSolana (SOL)\n\n$85.39   -1.54%\n\n Solana price\n\nHyperliquid\n\nHyperliquid (HYPE)\n\n$74.42   1.1%\n\n Hyperliquid price\n\nCardano\n\nCardano (ADA)\n\n$0.178459   1.89%\n\n Cardano price\n\nChainlink\n\nChainlink (LINK)\n\n$10.57   1.14%\n\n Chainlink price\n\nPOL (ex-MATIC)\n\nPOL (ex-MATIC) (POL)",
+                    "score": 0.48249006
+                  },
+                  {
+                    "title": "Miami-Dade property owners can now pay their property taxes with Bitcoin, tax collector says - CBS Miami",
+                    "url": "https://www.cbsnews.com/miami/news/miami-dade-property-taxes-bitcoin-payment-tax-collector",
+                    "source": "cbsnews.com",
+                    "summary": "\"Government must keep up with the times and the needs of the people we serve,\" Fernandez said in a statement. \"Innovation is about making government more accessible, efficient, and convenient. By accepting Bitcoin as a payment option, we are giving property owners another way to pay their taxes, whether online or in person, while continuing to offer the traditional payment methods they already know and trust.\" [...] A third-party conversion system converts the digital currency into dollars at the time of payment. That conversion ensures the county receives the full dollar amount owed and integrates the transaction into the office's standard reconciliation and accounting reports without requiring county workers to maintain digital crypto wallets. [...] According to Fernandez, the new digital payment system will allow taxpayers to pay their tax bills through supported cryptocurrency exchange accounts or digital wallets, with every transaction automatically converted to U.S. dollars before the funds reach county accounts.\n\nCounty officials emphasized that the Tax Collector's Office will not hold, invest in, or manage any cryptocurrency directly, thereby protecting public funds from the unpredictability of the crypto market.",
+                    "score": 0.46377817
+                  },
+                  {
+                    "title": "Miami-Dade Tax Collector now accepts Bitcoin for property tax payments",
+                    "url": "https://www.news4jax.com/news/local/2026/11/09/miami-dade-tax-collector-now-accepts-bitcoin-for-property-tax-payments",
+                    "source": "news4jax.com",
+                    "summary": "Recommended Videos\n\n“Government must keep up with the times and the needs of the people we serve,” Fernandez said. “Innovation is about making government more accessible, efficient, and convenient. By accepting Bitcoin as a payment option, we are giving property owners another way to pay their taxes, whether online or in person, while continuing to offer the traditional payment methods they already know and trust.”\n\n### How it works [...] ### How it works\n\nProperty owners who choose to pay with Bitcoin can select the cryptocurrency option during the online checkout process or request it when paying in person. From there, users connect a supported cryptocurrency exchange account or digital wallet and authorize the payment.\n\nThe transaction is then automatically converted into U.S. dollars before the funds reach the Tax Collector’s Office — meaning the office never holds, invests in or manages cryptocurrency directly. [...] “Residents deserve a government that moves forward, not one that falls behind,” Fernandez said. “We are embracing new technology without compromising our responsibility to protect taxpayer dollars. Whether someone chooses to pay with Bitcoin or a traditional payment method, our office receives the full amount owed in U.S. dollars. This is about providing more choices while maintaining the financial accountability and transparency our residents expect.”",
+                    "score": 0.45983404
+                  },
+                  {
+                    "title": "MARA Sold 13,597 Bitcoin After Q3, and It Isn't Done Selling",
+                    "url": "https://beincrypto.com/mara-sells-13597-bitcoin-after-q3",
+                    "source": "beincrypto.com",
+                    "summary": "_Subscribe to our YouTube channel to watch leaders and journalists provide expert insights_\n\n#Bitcoin Mining#Marathon Digital#Bitcoin (BTC) News#Stock Market News\n\nRead Next\n\nImage 20: Altcoin Speculation Peaked With Bitcoin Near $87,000, but Recent Buyers Now Sell at Losses\n\nNews Markets 14 minutes ago Altcoin Speculation Peaked With Bitcoin Near $87,000, but Recent Buyers Now Sell at Losses\n\nYou might also like [...] MARA’s 2026 strategy allows it to sell Bitcoin held on its balance sheet. Its 2025 strategy covered only coins from its own mining operations.\n\n> “We expect to continue to monetize bitcoin to enhance our financial flexibility,” the letter read.\n\nThe letter points to three uses for the cash those future sales would raise. [...] MARA is not the only miner drawing down its coins. Rival Bitcoin miner Riot Platforms sold 79% of its Bitcoin in 3 months, cutting holdings to 2,418 BTC by September 30. But Riot paired its November 4 results with a signed data center lease worth about $28 billion. Its shares rose nearly 14% that day.\n\nMARA’s next updates will show whether the two leases get signed and how much more Bitcoin it sells. Together, those answers will indicate how long its remaining coins can fund its plans.",
+                    "score": 0.41875634
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here's the Bitcoin news from today:\n\n**Market & Macro**\n- **Bitcoin lags equity rally as Fed hike odds hit 84%** — Global equity funds pulled in a record $266B over four weeks, but BTC sat out the rush. Markets now price an 84.4% chance of a quarter-point Fed hike on December 9, which pressures non-yielding assets. US spot Bitcoin ETFs saw $1.28B in net outflows from Nov 2–6. ([Yahoo Finance](https://finance.yahoo.com/markets/crypto/articles/bitcoin-sits-equity-fund-rush-085147233.html))\n- **BTC trading around $74,300**, stuck below $75,000 amid the risk-off tone. ([crypto.news](https://crypto.news/trump-media-bitcoin-holdings-q3-2026))\n\n**Corporate Treasuries & Miners**\n- **MARA sold 13,597 BTC (~$1.1B) in six weeks** and plans to keep selling — $750M went to repaying BTC-backed loans, releasing 17,477 coins from collateral. Year-to-date sales now exceed 40,000 BTC, with proceeds earmarked partly for AI infrastructure. ([CoinDesk](https://www.coindesk.com/markets/2026/11/10/bitcoin-miner-mara-sold-13-597-btc-for-usd1-1-billion-in-six-weeks-plans-to-sell-more), [BeInCrypto](https://beincrypto.com/mara-sells-13597-bitcoin-after-q3))\n- **Riot Platforms sold 79% of its Bitcoin** in three months, down to 2,418 BTC — but paired the news with a ~$28B data center lease. ([BeInCrypto](https://beincrypto.com/mara-sells-13597-bitcoin-after-q3))\n- **Trump Media added 1,510 BTC in Q3**, bringing its treasury to 15,649 BTC (~$1.17B). ([crypto.news](https://crypto.news/trump-media-bitcoin-holdings-q3-2026), [Bitcoin Foundation](https://bitcoinfoundation.org/news/bitcoin/trump-media-adds-1-510-btc-as-noteholders-near-1b-repayment-option))\n\n**Adoption**\n- **Miami-Dade County now accepts Bitcoin for property taxes** — payments are auto-converted to USD via a third-party processor, so the county never holds crypto. ([CBS Miami](https://www.cbsnews.com/miami/news/miami-dade-property-taxes-bitcoin-payment-tax-collector), [News4Jax](https://www.news4jax.com/news/local/2026/11/09/miami-dade-tax-collector-now-accepts-bitcoin-for-property-tax-payments))\n\n**Takeaway:** The dominant theme is miners and treasuries monetizing BTC to shore up balance sheets and fund AI/data-center pivots, while macro headwinds (Fed hike odds, ETF outflows) keep price capped below $75K.\n\nWant me to dig deeper into any of these — e.g., the MARA/Riot selling trend or the Fed's impact on BTC?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "bitcoin",
+            "topic": "news",
+            "timeframe": "day",
+            "max_results": 8
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "bitcoin",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Bitcoin Sits Out Equity Fund Rush as Fed Hike Odds Reach 84%",
+                "url": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-sits-equity-fund-rush-085147233.html",
+                "source": "finance.yahoo.com",
+                "summary": "Federal Reserve building as markets weigh the 10-year Treasury yield forecast. Photo by BeInCrypto\n\n \n\nGlobal equity funds drew a record $266 billion in four weeks, per the Kobeissi Letter. Bitcoin (BTC) sat out the rush as Fed hike odds for December hit 84.4%.\n\nThat rush now meets a Fed that markets expect to tighten. Higher rates raise Treasury returns against non-yielding assets like Bitcoin, leaving BTC holders facing a second headwind.\n\n## Who Is Capturing the Equity Fund Flows? [...] However, the Fed held rates at 3.75% to 4% on October 28 in a 10 to 2 vote. Officials Lisa Cook and Beth Hammack dissented in favor of a quarter-point hike at that meeting.\n\nMeanwhile, Bitcoin lagged the Nasdaq rebound on Friday. US spot Bitcoin exchange-traded funds (ETFs) saw $1.28 billion in net outflows from November 2 to 6, the analysis said. [...] Global equity funds gained $89 billion last week, with US funds supplying $32 billion of it. As a result, four-week inflows reached a record $266 billion, the post said.\n\n## What Do 84% Fed Hike Odds Mean for Bitcoin?\n\nThe CME Group's FedWatch tool converts futures on the Fed's benchmark rate into probabilities. It shows an 84.4% chance of a quarter-point hike on December 9, with 0% assigned to a cut.",
+                "score": 0.5132568
+              },
+              {
+                "title": "Trump Media Bitcoin Holdings Reach 15,649 BTC",
+                "url": "https://bitcoinfoundation.org/news/bitcoin/trump-media-adds-1-510-btc-as-noteholders-near-1b-repayment-option",
+                "source": "bitcoinfoundation.org",
+                "summary": "Price Analysis\n\n### Bitcoin in 2027: The Craziest Price Predictions from $100K to $1M\n\nThe Bitcoin price 2027 debate finds itself in unusually wide territory. Depending on whom you...\n\nIngrid Wolf Ingrid Wolf\n\n7 October 2026 •  6 min read\n\nUS Strategic Bitcoin Reserve Plans Stalled — What Happened? \n\nBitcoin News\n\n### US Strategic Bitcoin Reserve Plans Stalled — What Happened?\n\nPresident Trump has long voiced plans to create a strategic bitcoin reserve. But implementation has... [...] Nana K. Nana K.\n\n7 July 2026 •  2 min read\n\nBitcoin Price Debate Heats Up as Ray Dalio Backs Gold Over BTC \n\nBitcoin News\n\n### Bitcoin Price Debate Heats Up as Ray Dalio Backs Gold Over BTC\n\nThe Bitcoin Price debate moved back to gold after Ray Dalio questioned BTC▼$74,339.00’s...\n\nDenis O. Denis O.\n\n12 May 2026 •  3 min read [...] Denis O. Denis O.\n\n27 April 2026 •  2 min read\n\nBinance to Shut Down Crypto Mining Pool on November 10: What Miners Must Do \n\nCrypto Companies News\n\n### Binance to Shut Down Crypto Mining Pool on November 10: What Miners Must Do\n\nThe Binance Pool and other mining services provided by Binance will cease operations at 07:00 UTC...\n\nYevheny Serhiienko Yevheny Serhiienko\n\n3 weeks ago •  3 min read\n\nBitcoin in 2027: The Craziest Price Predictions from $100K to $1M \n\nPrice Analysis",
+                "score": 0.5045508
+              },
+              {
+                "title": "Q3'26 Shareholder Letter",
+                "url": "https://www.sec.gov/Archives/edgar/data/1507605/000150760526000026/q326shareholderletter.htm",
+                "source": "sec.gov",
+                "summary": "price of bitcoin mined lowered revenue by\n\n$94.8 million, partially offset by an $11.7 million\n\nbenefit from higher bitcoin production.\n\nWe produced an average of 24.4 BTC per day,\n\nup from 23.3 BTC in Q3 2025, resulting in 2,247\n\nBTC mined compared to 2,144 or 5% more BTC\n\nmined year-over-year. Blocks won also\n\nincreased 2% over the same period.\n\n\\Average Price of BTC over the quarter\n\nNET INCOME\n\nWe reported net income of $632.1 million, or\n\n$1.28 per diluted share, compared to net [...] bitcoin price volatility while funding the\n\nacquisition on a non-dilutive basis.\n\nBy using our bitcoin to fund Long Ridge and\n\nthen reduce leverage, we put our digital assets\n\nto work while strengthening our balance sheet.\n\nAlongside lending and monetization, Bitcoin-\n\nbacked financing remains one more tool we\n\nhave and can use in the future to support\n\ngrowth with the same discipline. [...] Our balance sheet has to support the obligations we have today and the opportunities we are building for tomorrow. So\n\nwe manage cash, bitcoin, debt, and access to capital as parts of one balance sheet. Since the beginning of the year, we\n\nhave reduced our total debt by $1.4 billion, or 37%.\n\nWe view bitcoin as a strategic asset and a source of financial flexibility. Depending on market conditions and the expected",
+                "score": 0.49161607
+              },
+              {
+                "title": "Bitcoin miner MARA sold 13,597 BTC for $1.1 billion in six weeks, plans to sell more",
+                "url": "https://www.coindesk.com/markets/2026/11/10/bitcoin-miner-mara-sold-13-597-btc-for-usd1-1-billion-in-six-weeks-plans-to-sell-more",
+                "source": "coindesk.com",
+                "summary": "It sold six times as much bitcoin in roughly six weeks as it mined during the entire third quarter.\n\nMost of the cash went straight to lenders. MARA used $750 million to repay loans secured against its bitcoin, releasing 17,477 coins it had pledged as collateral. Less than 5% of its remaining holdings are now lent out or pledged, down from 57% at September’s end. [...] Live\n\n00:05\n\n15:17\n\n15:22\n\nIt began allowing sales of newly mined bitcoin in 2025, then widened the policy this year to include its accumulated holdings. Sales reached 26,984 BTC in the first nine months of 2026. The latest disposals take the year’s total above 40,000 BTC.\n\n“We intend to continue using bitcoin to build cash for purposes such as AI infrastructure opportunities,” MARA wrote. [...] That cash also has other claims on it. Some bondholders can demand early repayment starting next year, and MARA’s board has authorized share repurchases of up to $500 million.\n\nThe shift comes as mining revenue weakens. Third-quarter revenue fell 35% to $164 million. MARA reported a $632 million profit, including an $885 million accounting gain from the rise in bitcoin’s value during the quarter.",
+                "score": 0.484845
+              },
+              {
+                "title": "Trump Media adds 1,510 Bitcoin in Q3 as treasury reaches $1.17B",
+                "url": "https://crypto.news/trump-media-bitcoin-holdings-q3-2026",
+                "source": "crypto.news",
+                "summary": "The Bitcoin inheritance gap between a will and a wallet\n\nBitcoin  BTC   Bitcoin\n\nPeter Schiff warns of Bitcoin crash again as BTC misses Wall Street rebound - 12\n\nMarkets\n\n Read more - Peter Schiff warns of Bitcoin crash again as BTC misses Wall Street rebound  \n\nPeter Schiff warns of Bitcoin crash again as BTC misses Wall Street rebound\n\nBitcoin  BTC   Bitcoin\n\nWhy is Bitcoin price stuck below $75,000? - 13\n\nMarkets\n\n Read more - Why is Bitcoin price stuck below $75,000? [...] Why is Bitcoin price stuck below $75,000?\n\nBitcoin  BTC   Bitcoin\n\nSign up for crypto news and market insights\n\nGet crypto market analysis and curated news delivered right to your inbox every week.\n\nYou have successfully joined our subscriber list. [...] Bitcoin (BTC)\n\n$74,339.00   -0.02%\n\n Bitcoin price\n\nEthereum\n\nEthereum (ETH)\n\n$2,103.50   -0.49%\n\n Ethereum price\n\nXRP\n\nXRP (XRP)\n\n$1.09   -0.81%\n\n XRP price\n\nBNB\n\nBNB (BNB)\n\n$687.85   0.87%\n\n BNB price\n\nSolana\n\nSolana (SOL)\n\n$85.39   -1.54%\n\n Solana price\n\nHyperliquid\n\nHyperliquid (HYPE)\n\n$74.42   1.1%\n\n Hyperliquid price\n\nCardano\n\nCardano (ADA)\n\n$0.178459   1.89%\n\n Cardano price\n\nChainlink\n\nChainlink (LINK)\n\n$10.57   1.14%\n\n Chainlink price\n\nPOL (ex-MATIC)\n\nPOL (ex-MATIC) (POL)",
+                "score": 0.48249006
+              },
+              {
+                "title": "Miami-Dade property owners can now pay their property taxes with Bitcoin, tax collector says - CBS Miami",
+                "url": "https://www.cbsnews.com/miami/news/miami-dade-property-taxes-bitcoin-payment-tax-collector",
+                "source": "cbsnews.com",
+                "summary": "\"Government must keep up with the times and the needs of the people we serve,\" Fernandez said in a statement. \"Innovation is about making government more accessible, efficient, and convenient. By accepting Bitcoin as a payment option, we are giving property owners another way to pay their taxes, whether online or in person, while continuing to offer the traditional payment methods they already know and trust.\" [...] A third-party conversion system converts the digital currency into dollars at the time of payment. That conversion ensures the county receives the full dollar amount owed and integrates the transaction into the office's standard reconciliation and accounting reports without requiring county workers to maintain digital crypto wallets. [...] According to Fernandez, the new digital payment system will allow taxpayers to pay their tax bills through supported cryptocurrency exchange accounts or digital wallets, with every transaction automatically converted to U.S. dollars before the funds reach county accounts.\n\nCounty officials emphasized that the Tax Collector's Office will not hold, invest in, or manage any cryptocurrency directly, thereby protecting public funds from the unpredictability of the crypto market.",
+                "score": 0.46377817
+              },
+              {
+                "title": "Miami-Dade Tax Collector now accepts Bitcoin for property tax payments",
+                "url": "https://www.news4jax.com/news/local/2026/11/09/miami-dade-tax-collector-now-accepts-bitcoin-for-property-tax-payments",
+                "source": "news4jax.com",
+                "summary": "Recommended Videos\n\n“Government must keep up with the times and the needs of the people we serve,” Fernandez said. “Innovation is about making government more accessible, efficient, and convenient. By accepting Bitcoin as a payment option, we are giving property owners another way to pay their taxes, whether online or in person, while continuing to offer the traditional payment methods they already know and trust.”\n\n### How it works [...] ### How it works\n\nProperty owners who choose to pay with Bitcoin can select the cryptocurrency option during the online checkout process or request it when paying in person. From there, users connect a supported cryptocurrency exchange account or digital wallet and authorize the payment.\n\nThe transaction is then automatically converted into U.S. dollars before the funds reach the Tax Collector’s Office — meaning the office never holds, invests in or manages cryptocurrency directly. [...] “Residents deserve a government that moves forward, not one that falls behind,” Fernandez said. “We are embracing new technology without compromising our responsibility to protect taxpayer dollars. Whether someone chooses to pay with Bitcoin or a traditional payment method, our office receives the full amount owed in U.S. dollars. This is about providing more choices while maintaining the financial accountability and transparency our residents expect.”",
+                "score": 0.45983404
+              },
+              {
+                "title": "MARA Sold 13,597 Bitcoin After Q3, and It Isn't Done Selling",
+                "url": "https://beincrypto.com/mara-sells-13597-bitcoin-after-q3",
+                "source": "beincrypto.com",
+                "summary": "_Subscribe to our YouTube channel to watch leaders and journalists provide expert insights_\n\n#Bitcoin Mining#Marathon Digital#Bitcoin (BTC) News#Stock Market News\n\nRead Next\n\nImage 20: Altcoin Speculation Peaked With Bitcoin Near $87,000, but Recent Buyers Now Sell at Losses\n\nNews Markets 14 minutes ago Altcoin Speculation Peaked With Bitcoin Near $87,000, but Recent Buyers Now Sell at Losses\n\nYou might also like [...] MARA’s 2026 strategy allows it to sell Bitcoin held on its balance sheet. Its 2025 strategy covered only coins from its own mining operations.\n\n> “We expect to continue to monetize bitcoin to enhance our financial flexibility,” the letter read.\n\nThe letter points to three uses for the cash those future sales would raise. [...] MARA is not the only miner drawing down its coins. Rival Bitcoin miner Riot Platforms sold 79% of its Bitcoin in 3 months, cutting holdings to 2,418 BTC by September 30. But Riot paired its November 4 results with a signed data center lease worth about $28 billion. Its shares rose nearly 14% that day.\n\nMARA’s next updates will show whether the two leases get signed and how much more Bitcoin it sells. Together, those answers will indicate how long its remaining coins can fund its plans.",
+                "score": 0.41875634
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T17:40:35"
+    }
+  ]
+}

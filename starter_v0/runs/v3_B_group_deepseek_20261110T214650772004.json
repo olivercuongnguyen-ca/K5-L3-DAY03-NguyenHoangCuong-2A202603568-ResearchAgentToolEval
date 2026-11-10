@@ -1,0 +1,289 @@
+{
+  "run_id": "v3_B_group_deepseek_20261110T214650772004",
+  "version": "v3",
+  "artifact_version": "v3+pa69f0718eac3+tcf0cd990105c",
+  "prompt_hash": "a69f0718eac3a2fecd6d098100dde0be186f9235cc64f0084f50138368d0396d",
+  "tools_hash": "cf0cd990105cd8a7cd42d300afb09198de4a4cdf17dbf6c0356a5562875f6bf5",
+  "phase": "B",
+  "suite": "group",
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "system_prompt": "C:\\Users\\Sakuya\\Documents\\Vinuni Project\\Day03-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\Sakuya\\Documents\\Vinuni Project\\Day03-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "generated_at": "2026-11-10T21:46:50",
+  "summary": {
+    "total_cases": 3,
+    "measured_cases": 3,
+    "provider_error_cases": 0,
+    "passed_cases": 3,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "G01_cite_with_url",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Yêu cầu trích dẫn có URL → gọi cite với đúng url và style=apa."
+      },
+      "input": "Trích dẫn giúp mình bài này theo APA: https://arxiv.org/abs/1706.03762",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "cite",
+            "args": {
+              "url": "https://arxiv.org/abs/1706.03762",
+              "style": "apa"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "cite",
+            "args": {
+              "url": "https://arxiv.org/abs/1706.03762",
+              "style": "apa"
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "cite",
+          "args": {
+            "url": "https://arxiv.org/abs/1706.03762",
+            "style": "apa"
+          },
+          "result": {
+            "tool": "cite_sources",
+            "result": {
+              "cited": "Cited https://arxiv.org/abs/1706.03762 in apa style."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "G06_multi_carry_topic",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "3 turns: đổi chủ đề sang Vinfast, giữ topic=news và timeframe=day."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tin NVIDIA hôm nay có gì?"
+        },
+        {
+          "role": "user",
+          "content": "Đổi sang Vinfast nhé"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn là tin hôm nay"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Vinfast",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "VinFast",
+              "topic": "news",
+              "timeframe": "day",
+              "max_results": 8
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "VinFast",
+            "topic": "news",
+            "timeframe": "day",
+            "max_results": 8
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "VinFast",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "VinFast",
+                "url": "https://tavily.com/knowledge/company/hSD1qJ1zYfEQ",
+                "source": "tavily.com",
+                "summary": "# VINFAST\nID: hSD1qJ1zYfEQ\nWebsite: www.vinfastauto.eu\nHeadquarters: Cat Hai, Hai Phong, Vietnam\nLinkedIn: www.linkedin.com/company/vinfast · 384,903 followers\nIndustry: Motor Vehicle Manufacturing\nCompany type: Privately Held\nParent company: Vingroup (www.vingroup.net/) [...] Description: VinFast is a company that provides compact and technical high-end electric vehicles. They offer solutions for businesses and provide services such as total cost of ownership. [...] Social profiles: www.facebook.com/vinfastglobalofficial, www.facebook.com/tohopsanxuatotovinfast, www.facebook.com/vinfast.nederland, www.twitter.com/vinfastofficial, www.twitter.com/vinfastnl, www.crunchbase.com/organization/vinfast, www.instagram.com/vinfastofficial, www.instagram.com/vinfastnederland, www.youtube.com/channel/uca5oijdhvvwj3vy5ivdwcaq\nEmail: support.vn@vinfastauto.com\nPhone: +31 20 369 0483, 84-24-3974-8579, +84 1900 23 23 89",
+                "score": 0.89302075
+              },
+              {
+                "title": "VinFast Announces new VF8 Electric SUV In The Philippines",
+                "url": "https://unbox.ph/wheels/vinfast-vf8-philippines-price",
+                "source": "unbox.ph",
+                "summary": "Skip to content\n\nUNBOX PH UNBOX PH\n\nUNBOX PH UNBOX PH\n\n# VinFast Announces new VF8 Electric SUV In The Philippines\n\n# VinFast Announces new VF8 Electric SUV In The Philippines\n\n John Nieves\n\nVinFast is strengthening its local lineup with the launch of its new mid-sized VF8 electric SUV, bringing aggressive pricing, sharp styling, and a smart, comfort-focused cabin built for daily city driving and long out-of-town road trips. [...] ​Inside the cabin, occupants are treated to an elevated experience featuring premium vegan leather seating, multi-functional steering, automatic climate control, and a crisp 12.9-inch central touchscreen paired with a 6-speaker audio system. Parking and tight city navigation are stress-free thanks to a high-definition 360-degree camera system. For safety, the vehicle comes loaded with an advanced driver-assistance suite, including adaptive cruise control, lane assistance, collision warnings, [...] ​Embodying the brand’s dynamic “Tech Fluid” design philosophy, the VF 8 cuts a sleek figure with smooth aerodynamic lines and a powerful stance. Under the skin, performance is driven by a front-axle electric motor producing 227 horsepower and 330 Nm of torque. Energy is supplied by a robust 60.13 kWh battery pack, giving the SUV an impressive driving range of up to 480 kilometers on a single charge under the NEDC standard. Handling and stability are kept smooth via an independent MacPherson",
+                "score": 0.5976789
+              },
+              {
+                "title": "VinFast offers 10-year warranty on VF 8 EV for Canadian market",
+                "url": "https://www.streetinsider.com/Corporate+News/VinFast+offers+10-year+warranty+on+VF+8+EV+for+Canadian+market/27317584.html",
+                "source": "streetinsider.com",
+                "summary": "QUICK LINKS :\n Goldman Sachs Conviction Buy List\n Warren Buffett News\n Elliott Management News\n Follow @Street\\_Insider\n\nCorporate News, Hot Corp. News\n\n\nStock Quotes (1)\n\n\n\n##### Join SI Premium – FREE\n\nVinFast (NASDAQ: VFS), the Vietnamese electric vehicle manufacturer, is offering a 10-year or 200,000-kilometer limited warranty on its VF 8 electric SUV in Canada, with separate battery coverage for 10 years and unlimited kilometers under standard personal use conditions. [...] According to VinFast Canada's Energy Cost Savings Calculator, driving a VF 8 Eco for 2,000 km per month could generate approximately C$8,328 in energy savings over three years compared with a conventional gasoline vehicle. The VF 8 Plus is estimated to save C$8,107 over the same period. VinFast states these figures represent energy-cost reductions of 77% and 75%, respectively. The company notes that actual savings depend on electricity rates, gasoline prices, charging habits, and driving [...] habits, and driving conditions, and exclude purchase price, financing, insurance, depreciation, and maintenance costs.",
+                "score": 0.59401023
+              },
+              {
+                "title": "VinFast launches the all-new VF 8 at P1.548M, plus P3,350 a month for the battery – ASTIG: Philippine News & Reviews",
+                "url": "https://astig.ph/vinfast-all-new-vf-8-launch-philippines-p1548m-battery-subscription-2026",
+                "source": "astig.ph",
+                "summary": "The all-new VF 8, the second generation of VinFast’s mid-size electric SUV, was officially launched on Tuesday at P1.548 million. That figure applies when the buyer signs up for the company’s battery subscription, which costs P3,350 a month.\n\nBuyers who want the battery included in the purchase pay P1.799 million. Both prices cover the Comfort variant that VinFast Philippines opened for reservations in October, after the Department of Energy recognized the model as an electric vehicle. [...] ## VinFast has launched the all-new VF 8 in the Philippines at P1.548 million with a P3,350 monthly battery subscription, or P1.799 million with the battery included in the purchase. #VinFast #VF8 #ElectricVehicles #Philippines #EV\n\nASTIG PR\n\nby  ASTIG PR\n\nAdvertisements\n\nVinFast’s newest electric vehicle is now on the Philippine market, and its price tag arrives in two parts: the car, and then the battery. [...] sections\n\nFor Pinoys, by Pinoys #ASTIGPH\n\nASTIG: Philippine News & Reviews\n\nA red all-new VinFast VF 8 electric SUV driving on a coastal road\n\nVinFast official product photography of the all-new VF 8. (Photo: VinFast Philippines)\n\nLIVE\n\n# VinFast launches the all-new VF 8 at P1.548M, plus P3,350 a month for the battery",
+                "score": 0.59344494
+              },
+              {
+                "title": "In 7 pictures: VinFast PH launches all-new VF8 with P1.548-M starting price",
+                "url": "https://www.zigwheels.ph/car-news/in-7-pictures-vinfast-ph-launches-all-new-vf8-with-p1-548-m-starting-price",
+                "source": "zigwheels.ph",
+                "summary": "For its powertrain, the VinFast VF8 uses a single-motor setup that drives its front wheels. At maximum, the model can produce up to 227 horsepower and 330 Newton-meters of torque. Thanks to its 60.13-kilowatt-hour battery, the model also has a range of 480 kilometers (km) under the New European Driving Cycle (NEDC). \n\nVinFast VF 8 Photo by Juan Paulo Papa [...] Its main display is a 12.9-inch touchscreen with smartphone connectivity. This display is linked to a six-piece speaker set. Topping up devices inside the vehicle is done through USB ports and a 50-watt wireless smartphone charging pad. \n\nThe driver of the VF8, meanwhile, has access to the following: \n\n Electronic parking brake\n Digital gauge cluster\n Flat top and bottom leather steering wheel\n Column shifter\n\nVinFast VF 8 Photo by Juan Paulo Papa [...] Monthly Payments : ₱18,853 x 60\n\n   4.17  (6 Reviews)   Get Exclusive Promos\n VinFast VF 9 ev\n\n  VinFast VF 9 \n\n  ₱5.39 Million  SRP Price Manila\n\n  Monthly Payments : ₱92,468 x 60\n\n   4.33  (3 Reviews)   Get Exclusive Promos\n VinFast VF 7 ev\n\n  VinFast VF 7 \n\n  ₱1.76 - 2.38 Million  SRP Price Manila\n\n  Monthly Payments : ₱30,193 x 60\n\n   4  (3 Reviews)   Get Exclusive Promos\n VinFast VF 6 ev\n\n  VinFast VF 6 \n\n  ₱1.499 - 1.699 Million  SRP Price Manila\n\n  Monthly Payments : ₱25,716 x 60",
+                "score": 0.47504577
+              },
+              {
+                "title": "VinFast VF8 2027 launched in PH: Prices, Specs, Features",
+                "url": "https://www.topgear.com.ph/news/car-news/vinfast-vf8-2027-ph-launch-a5361-20261110",
+                "source": "topgear.com.ph",
+                "summary": "This compact crossover, like the rest of the Vietnamese carmaker’s lineup, is a fully electric vehicle. It stands 4,701mm long, 1,872mm wide, and 1,670mm tall and has 170mm of ground clearance. It’s got a sleek front fascia matched with a stylish rear end. In the non-black variants, the grille and a portion of the tailgate remain blacked-out, which make for a somewhat two-tone look.\n\nphoto of the vinfast vf8 2027 [...] The all-new VinFast VF8 is now available in the Philippines for P1.548 million with the brand’s EV battery subscription program. If you want to opt out of the subscription, the SRP goes up to P1.799 million. Color options for the all-new VF8 are namely: Infinity Blanc, Starburst Blue, Jet Black, and the two-tone blacktop Solar Ruby that costs an additional P10,000.\n\nWhat do you think of the all-new VF8, readers? The comments section is open.\n\n## More photos of the all-new VinFast VF8 2027: [...] The VF8 has a five-seat configuration, and its cabin is stitched in a healthy amount of leather and soft-touch materials. There’s a large center screen on the dash, a wireless charger and cup holders on the center console, and a sizeable storage compartment underneath. With a 2,840mm wheelbase, there’s plenty of legroom for all five passengers.\n\nphoto of the vinfast vf8 2027\n\nphoto of the vinfast vf8 2027",
+                "score": 0.45246392
+              },
+              {
+                "title": "Parking and retrieving your car is easy with the reverse parking feature on the VinFast Evo Grand Limited.",
+                "url": "https://www.vietnam.vn/en/gui-xe-lay-xe-de-dang-voi-tinh-nang-di-chuyen-lui-tren-vinfast-evo-grand-limited",
+                "source": "vietnam.vn",
+                "summary": "In addition, the Evo Grand Limited is equipped with a Smart Key, allowing users to easily locate their vehicle in a parking lot and unlock it quickly without inserting the key into the ignition. The anti-theft feature can alert the owner if the vehicle is moved from its parking position, adding an extra layer of remote protection.\n\nGửi xe, lấy xe dễ dàng với tính năng di chuyển lùi trên VinFast Evo Grand Limited - 2\n\nThe car is equipped with many technological features (Photo: VinFast). [...] From October 31st to November 29th, VinFast is running a series of events called “Trade in your gasoline for electricity – Join VinFast for a green future” at 34 Vincom shopping malls nationwide. Besides exploring and test-driving electric motorcycles, customers will receive advice on the second phase of the “For a Green Future” program, with support up to 6 million VND.\n\nCustomers can find information about the program and event locations in each area on the VinFast website.\n\nOriginal article [...] Customers who choose installment payments can participate in the \"Buy a car for 0 down payment\" policy until December 31st. Loans are provided through banks and financial institutions cooperating with VinFast, with a limit of up to 100% of the car's value. Buyers do not need to provide down payment when receiving the car. This policy is suitable for customers who do not have significant savings.\n\nGửi xe, lấy xe dễ dàng với tính năng di chuyển lùi trên VinFast Evo Grand Limited - 3",
+                "score": 0.45231876
+              },
+              {
+                "title": "VinFast PH launches all-new VF 8 Comfort; starts at PHP 1.548M | AutoIndustriya",
+                "url": "https://www.autoindustriya.com/auto-industry-news/vinfast-ph-launches-all-new-vf-8-comfort-starts-at-php-1548m.html",
+                "source": "autoindustriya.com",
+                "summary": "Barney Biscocho\n\nAfter opening the order books and being recognized by the Department of Energy (DOE) as an electric vehicle (EV), VinFast Philippines has officially launched the VF 8. Serving as their latest D-segment EV offering, the second-generation VF 8 features the brand's newest design language and is actually smaller than the first-generation model it will be replacing. [...] The VF 8 Comfort is also the first VinFast to come with the brand's AI virtual assistant called ViVi. With it, users can activate it by saying “Hey ViVi” or pressing the voice button on the steering wheel. They can then ask ViVi to adjust the fan speed of the climate control, open or close the windows remotely, open or close the power tailgate, and even turn on or turn off the interior lights in the VF 8. [...] ## Related Posts\n\nVinFast partners with 13 dealers to develop 27 showrooms in PH\n\nAuto News\n\n### VinFast partners with 13 dealers to develop 27 showrooms in PH\n\nVinFast is accelerating its plans to have more locations and EV services across the Philippines\n\nAutoIndustriya.com\n\n•\n\nSEP 15, 2026, 9:00 AMVinFast Marikina now offering full dealership services, EV charging\n\nAuto News\n\n### VinFast Marikina now offering full dealership services, EV charging",
+                "score": 0.44767818
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G10_multi_confirm_before_send",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "3 turns: yêu cầu đăng Telegram → xác nhận yes_no trước, không gọi send."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tóm tắt tin NVIDIA hôm nay giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Tạm ổn"
+        },
+        {
+          "role": "user",
+          "content": "Đăng bản tin đó lên Telegram nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Bạn muốn mình đăng bản tin tóm tắt về NVIDIA lên Telegram ngay bây giờ phải không? (Nếu có, cho mình biết kênh/nhóm Telegram cụ thể nếu cần.)",
+              "response_type": "yes_no"
+            }
+          }
+        ],
+        "actual_text": "",
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn muốn mình đăng bản tin tóm tắt về NVIDIA lên Telegram ngay bây giờ phải không? (Nếu có, cho mình biết kênh/nhóm Telegram cụ thể nếu cần.)",
+            "response_type": "yes_no"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn muốn mình đăng bản tin tóm tắt về NVIDIA lên Telegram ngay bây giờ phải không? (Nếu có, cho mình biết kênh/nhóm Telegram cụ thể nếu cần.)",
+            "response_type": "yes_no",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    }
+  ]
+}
