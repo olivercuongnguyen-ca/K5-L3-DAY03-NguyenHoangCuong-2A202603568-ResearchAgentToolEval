@@ -31,9 +31,9 @@ Mỗi thành viên tự viết một mục theo mẫu dưới, đặt tiêu đ�
 
 ## PhanBaAn-2A202603375
 
-- Việc đã làm:
-- Commit hoặc file thể hiện phần việc đó:
-- Điều đã học:
+- Việc đã làm: Viết tool `semantic_scholar` (tìm bài báo ngoài arXiv, trả abstract và số trích dẫn), khai báo trong `tools.yaml`, viết unit test và 3 eval case `B_SEMANTIC_001–003`.
+- Commit hoặc file thể hiện phần việc đó: commit `9afe1e0` trên nhánh `phanbaan`; `tools/semantic_scholar/` (`tool.py`, `TOOL.md`), các test `test_semantic_scholar_*` trong `tests/test_tools_todo.py`.
+- Điều đã học: Một tool mới cần đủ 4 phần: code, `TOOL.md`, đăng ký trong `tools/__init__.py` và khai báo trong `tools.yaml`; contract test sẽ báo lỗi nếu các nơi này lệch nhau. Unit test với `fake_http` kiểm tra được xử lý lỗi HTTP mà eval routing không thấy được.
 
 ## DoMinhHieu-2A202603402
 
