@@ -159,7 +159,7 @@ Mỗi người làm trên một nhánh riêng; bài nộp là bản gộp bằng
 
 | Thành viên | Đóng góp chính | File / bằng chứng |
 |---|---|---|
-| Bùi Văn Lâm | Chuỗi v0–v3 chính (Gemini), 3 tool mới, Streamlit UI, poster, báo cáo | `tools/crypto_price|github_search|currency_convert/`, `app.py`, `artifacts/poster.html`, `system_prompt_v*.md` |
+| Bùi Văn Lâm | Chuỗi v0–v3 chính (Gemini), 3 tool mới, Streamlit UI, poster, báo cáo | `tools/crypto_price/`, `tools/github_search/`, `tools/currency_convert/`, `app.py`, `artifacts/poster.html`, `system_prompt_v*.md` |
 | Phan Bá An | Tool `semantic_scholar`, unit test, 3 eval case | `tools/semantic_scholar/`, `tests/test_tools_todo.py`, `data/eval_group.json` |
 | Đỗ Minh Hiếu | Tool `cite`, provider DeepSeek, 11 run thí nghiệm prompt/tool, 3 eval case | `tools/cite/`, `providers/deepseek_provider.py`, `runs/v*_deepseek_*`, `app_dominhhieu.py` |
 | Nguyễn Hoàng Cương | Provider TokenHarbor, UI HTML, thí nghiệm `tools_v0` → `tools_v4`, 10 eval case, tổng hợp bài nộp | `providers/tokenharbor_provider.py`, `ui_server.py`, `ui/`, `artifacts/tools_v4.yaml`, `runs/v*_tokenharbor_*` |
