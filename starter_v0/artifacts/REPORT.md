@@ -7,7 +7,7 @@
 ## Team
 
 - Team:
-- Members: Bùi Văn Lâm
+- Members: Nguyễn Hoàng Cương - 2A202603568, Bùi Văn Lâm - 2A202603400, Phan Bá An - 2A202603375, Đỗ Minh Hiếu - 2A202603402
 - Provider/model: Google Gemini (`gemini-3.5-flash-lite`)
 
 ---
