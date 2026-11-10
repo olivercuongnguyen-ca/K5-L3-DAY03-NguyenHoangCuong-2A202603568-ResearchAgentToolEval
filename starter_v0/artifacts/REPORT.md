@@ -124,5 +124,3 @@ Từ `transcripts/`:
 - **Cải thiện tiếp**: nới grader cho query tương đương; chạy lại nhiều lần để đo nhiễu; thêm tool mới.
 
 ## B7. Small Local Model Challenge (bonus)
-
-Không thực hiện.
