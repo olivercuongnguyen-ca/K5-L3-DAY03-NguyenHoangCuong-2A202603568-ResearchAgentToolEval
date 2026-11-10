@@ -96,7 +96,7 @@
       "phase": "B", "suite": "base",
       "query": "Đăng bản tin này lên Telegram giúp mình",
       "failure_type": "wrong_boundary",
-      "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "yes_no"}}]},
+      "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "text"}}]},
       "metadata": {"skill": "confirm_before_write", "difficulty": "medium", "what_it_tests": "Hành động ghi (gửi) → xác nhận trước (ask_user yes_no), không tự gửi."}
     },
     {

@@ -58,6 +58,7 @@ def main() -> None:
             self.send_response(code)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(body)))
+            self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             self.wfile.write(body)
 
@@ -76,6 +77,23 @@ def main() -> None:
             self.send_error(404)
 
         def do_POST(self):
+            try:
+                self._post()
+            except Exception as exc:
+                import traceback; traceback.print_exc()
+                try:
+                    self._json(500, {"status": "error", "text": f"{type(exc).__name__}: {exc}", "tools": []})
+                except Exception:
+                    pass
+
+        def do_OPTIONS(self):
+            self.send_response(204)
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+            self.end_headers()
+
+        def _post(self):
             n = int(self.headers.get("Content-Length") or 0)
             data = json.loads(self.rfile.read(n) or b"{}")
             if self.path == "/api/reset":
