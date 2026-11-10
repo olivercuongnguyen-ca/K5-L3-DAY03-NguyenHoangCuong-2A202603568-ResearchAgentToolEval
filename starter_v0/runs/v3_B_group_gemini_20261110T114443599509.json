@@ -1,0 +1,707 @@
+{
+  "run_id": "v3_B_group_gemini_20261110T114443599509",
+  "version": "v3",
+  "artifact_version": "v3+p8cf192ab7e42+tf2f04842cbb5",
+  "prompt_hash": "8cf192ab7e423cbb0d207cd5a3569c448e01b4f02c21f3f1a27bec5962f29bb5",
+  "tools_hash": "f2f04842cbb5bb0f15781d64685e209a15d238ab4c5fc29da220cf93994aba4c",
+  "phase": "B",
+  "suite": "group",
+  "provider": "gemini",
+  "model": "gemini-3.5-flash-lite",
+  "system_prompt": "C:\\Users\\OS\\Downloads\\VinAI\\K5-L3-DAY03-NguyenHoangCuong-2A202603568-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\OS\\Downloads\\VinAI\\K5-L3-DAY03-NguyenHoangCuong-2A202603568-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "generated_at": "2026-11-10T11:44:43",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 10,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "G01_crypto_price_btc",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "new_tool_crypto",
+        "difficulty": "easy",
+        "what_it_tests": "Tra cứu giá Bitcoin -> route đúng tool crypto_price với symbol=BTC"
+      },
+      "input": "Giá Bitcoin hôm nay là bao nhiêu USD?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "crypto_price",
+            "args": {
+              "symbol": "BTC",
+              "currency": "USD"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "crypto_price",
+            "args": {
+              "currency": "USD",
+              "symbol": "BTC"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "crypto_price",
+          "args": {
+            "currency": "USD",
+            "symbol": "BTC"
+          },
+          "result": {
+            "tool": "crypto_price",
+            "symbol": "BTC",
+            "currency": "USD",
+            "price": 74719.0,
+            "change_24h": -0.281,
+            "high_24h": 75568.18,
+            "low_24h": 73750.0,
+            "status": "success"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_github_search_python_agent",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "new_tool_github",
+        "difficulty": "easy",
+        "what_it_tests": "Tìm repo GitHub -> route github_search với query và language=python"
+      },
+      "input": "Tìm kiếm các repository AI agent viết bằng Python trên GitHub",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_search",
+            "args": {
+              "query": "AI agent",
+              "language": "python"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "github_search",
+            "args": {
+              "query": "AI agent",
+              "language": "python",
+              "sort": "stars"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "github_search",
+          "args": {
+            "query": "AI agent",
+            "language": "python",
+            "sort": "stars"
+          },
+          "result": {
+            "tool": "github_search",
+            "query": "AI agent",
+            "total_count": 317689,
+            "items": [
+              {
+                "name": "NousResearch/hermes-agent",
+                "url": "https://github.com/NousResearch/hermes-agent",
+                "description": "The agent that grows with you",
+                "stars": 262136,
+                "language": "Python"
+              },
+              {
+                "name": "langgenius/dify",
+                "url": "https://github.com/langgenius/dify",
+                "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
+                "stars": 160791,
+                "language": "Python"
+              },
+              {
+                "name": "langflow-ai/langflow",
+                "url": "https://github.com/langflow-ai/langflow",
+                "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
+                "stars": 156492,
+                "language": "Python"
+              },
+              {
+                "name": "langchain-ai/langchain",
+                "url": "https://github.com/langchain-ai/langchain",
+                "description": "The agent engineering platform.",
+                "stars": 149288,
+                "language": "Python"
+              },
+              {
+                "name": "Shubhamsaboo/awesome-llm-apps",
+                "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+                "description": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
+                "stars": 144319,
+                "language": "Python"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_currency_convert_usd_vnd",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "new_tool_currency",
+        "difficulty": "easy",
+        "what_it_tests": "Quy đổi ngoại tệ -> route currency_convert với amount=50"
+      },
+      "input": "Đổi 50 USD sang VND được bao nhiêu tiền?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "currency_convert",
+            "args": {
+              "amount": 50,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "currency_convert",
+            "args": {
+              "to_currency": "VND",
+              "amount": 50,
+              "from_currency": "USD"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "currency_convert",
+          "args": {
+            "to_currency": "VND",
+            "amount": 50,
+            "from_currency": "USD"
+          },
+          "result": {
+            "tool": "currency_convert",
+            "amount": 50.0,
+            "from_currency": "USD",
+            "to_currency": "VND",
+            "converted_amount": 1282051.2821,
+            "rate": 25641.025641,
+            "status": "success"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_out_of_scope_cooking",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "boundary_out_of_scope",
+        "difficulty": "easy",
+        "what_it_tests": "Công thức nấu ăn ngoài phạm vi research tools -> no_tool"
+      },
+      "input": "Hướng dẫn mình cách nấu món phở bò truyền thống tại nhà",
+      "expect": {
+        "no_tool": true
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Chào bạn! Để nấu món **phở bò truyền thống** chuẩn vị, thơm ngon và nước dùng trong vắt tại nhà, bạn có thể làm theo các bước hướng dẫn chi tiết dưới đây:\n\n---\n\n### **1. Nguyên liệu chuẩn bị (Cho khoảng 4 - 6 người ăn)**\n\n*   **Xương và thịt:**\n    *   Xương ống bò (hoặc xương bay): 1.5 - 2 kg (giúp nước dùng ngọt thanh).\n    *   Thịt bò tái/chín (nạm, gầu hoặc thăn bò): 500g.\n    *   Bò viên (tùy thích).\n*   **Gia vị thảo mộc (Phần tạo hương phở):**\n    *   Hành tây: 2 củ.\n    *   Hành tím: 5-6 củ.\n    *   Gừng tươi: 1 củ lớn (khoảng 100g).\n    *   Thảo quả: 2 quả.\n    *   Hoa hồi (đại hồi): 3-4 cánh.\n    *   Quế: 2-3 thanh nhỏ.\n    *   Hạt mùi (tùy chọn): 1 thìa cà phê.\n    *   Đinh hương: 3-4 nụ.\n*   **Gia vị nêm:**\n    *   Nước mắm ngon: 3-4 thìa canh.\n    *   Đường phèn: 1-2 viên nhỏ (giúp nước dùng ngọt dịu).\n    *   Muối/Hạt nêm.\n*   **Ăn kèm:**\n    *   Bánh phở tươi: 1 kg.\n    *   Hành lá, mùi ta (ngò rí), hành tây thái mỏng.\n    *   Rau ăn kèm: Húng quế, ngò gai, giá đỗ, rau mùi tàu.\n    *   Chanh, ớt, tương ớt, tương đen, giấm tỏi.\n\n---\n\n### **2. Các bước thực hiện**\n\n#### **Bước 1: Sơ chế và nướng nguyên liệu tạo mùi**\n1.  **Nướng thơm:** Gừng, hành khô và hành tây để nguyên vỏ, đem nướng trên bếp than hoặc lò vi sóng/nồi chiên không dầu cho đến khi vỏ xém vàng và dậy mùi thơm. \n2.  **Làm sạch:** Cạo sạch lớp vỏ cháy xém của gừng và hành, rửa sạch. Hành tây bóc vỏ ngoài.\n3.  **Rang gia vị:** Cho hoa hồi, quế, thảo quả, đinh hương, hạt mùi vào chảo rang khô trên lửa nhỏ khoảng 2-3 phút cho đến khi dậy mùi thơm thì cho vào túi vải sạch buộc chặt lại.\n\n#### **Bước 2: Sơ chế và ninh xương**\n1.  **Trần xương:** Xương ống bò rửa sạch, chặt khúc. Cho xương vào nồi nước sôi đun khoảng 5-7 phút cùng chút muối và vài lát gừng để loại bỏ tạp chất và mùi hôi. Sau đó vớt ra rửa lại thật sạch bằng nước lạnh.\n2.  **Ninh nước dùng:** Cho xương đã sạch vào nồi lớn, đổ ngập nước (khoảng 4-5 lít) và hầm ở lửa nhỏ trong ít nhất 3-4 tiếng. \n3.  Trong quá trình hầm, nhớ thường xuyên vớt bọt để nước dùng được trong.\n\n#### **Bước 3: Hoàn thiện nước dùng phở**\n1.  Sau khi hầm xương được khoảng 2 tiếng, cho gừng, hành tím, hành tây đã nướng và túi gia vị thảo mộc (hoa hồi, quế...) vào nồi nước dùng.\n2.  Nêm nếm gia vị: Thêm nước mắm, đường phèn, muối/hạt nêm cho vừa miệng (nước dùng phở thường có vị ngọt thanh đậm đà và hơi mặn nhẹ một chút để khi chan vào bánh phở nhạt là vừa).\n3.  Tiếp tục đun liu riu thêm 1-2 tiếng nữa, sau đó vớt bỏ bã hành, gừng và túi gia vị ra để nước dùng không bị đục và nồng quá mức.\n\n#### **Bước 4: Sơ chế thịt bò và rau thơm**\n*   **Thịt bò chín (nạm/gầu):** Luộc chín tới trong nồi nước dùng riêng hoặc thả trực tiếp vào nồi nước dùng, khi chín tới thì vớt ra thái lát mỏng.\n*   **Thịt bò tái:** Thái thật mỏng, ướp chút gừng băm nhỏ.\n*   Rau thơm, hành lá nhặt rửa sạch, thái nhỏ. Hành tây thái mỏng ngâm nước đá để bớt hăng.\n\n---\n\n### **3. Trình bày và thưởng thức**\n\n1.  **Trần bánh phở:** Nhúng bánh phở qua nồi nước sôi khoảng 10-15 giây rồi cho vào tô lớn.\n2.  Xếp thịt bò chín, thịt bò tái (nếu ăn tái thì đặt lên trên cùng), hành lá, hành tây thái mỏng lên trên bề mặt bánh phở.\n3.  Chan nước dùng đang sôi sùng sục ngập mặt phở.\n4.  Thưởng thức nóng kèm với các loại rau sống, chanh, ớt, và chén giấm tỏi hoặc tương ớt tùy sở thích.\n\nChúc bạn vào bếp thành công và có tô phở bò thơm ngon đúng điệu cho gia đình!",
+        "case_failure_type": "out_of_scope",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "G05_unnecessary_tool_math",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "boundary_math",
+        "difficulty": "easy",
+        "what_it_tests": "Tính toán cơ bản -> no_tool"
+      },
+      "input": "Tính căn bậc hai của 144 và giải thích",
+      "expect": {
+        "no_tool": true
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Căn bậc hai của 144 là **12** (và **-12**).\n\n**Giải thích:**\n- Căn bậc hai của một số $x$ là một số $y$ sao cho $y^2 = x$.\n- Trong trường hợp này, vì $12 \\times 12 = 144$ và $(-12) \\times (-12) = 144$, nên 144 có hai căn bậc hai là $12$ và $-12$.\n- Thường thì khi nói đến \"căn bậc hai số học\" (ký hiệu $\\sqrt{144}$), ta hiểu là giá trị dương, tức là **12**.",
+        "case_failure_type": "unnecessary_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "GM01_clarify_then_crypto",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_clarify_then_crypto",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 1 thiếu symbol, lượt 2 bổ sung ETH -> route crypto_price symbol=ETH"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Cho mình xem giá coin này với"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn muốn xem giá của đồng coin nào? Vui lòng cung cấp ký hiệu (ví dụ: BTC, ETH)."
+        },
+        {
+          "role": "user",
+          "content": "Xem giá đồng Ethereum (ETH) nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "crypto_price",
+            "args": {
+              "symbol": "ETH"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "crypto_price",
+            "args": {
+              "symbol": "ETH",
+              "currency": "USD"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "crypto_price",
+          "args": {
+            "symbol": "ETH",
+            "currency": "USD"
+          },
+          "result": {
+            "tool": "crypto_price",
+            "symbol": "ETH",
+            "currency": "USD",
+            "price": 2119.99,
+            "change_24h": -0.944,
+            "high_24h": 2151.9,
+            "low_24h": 2083.1,
+            "status": "success"
+          }
+        }
+      ]
+    },
+    {
+      "id": "GM02_clarify_then_github",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_clarify_then_github",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 1 thiếu query, lượt 2 bổ sung -> route github_search"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm repo trên GitHub giúp mình"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn muốn tìm repository về chủ đề gì?"
+        },
+        {
+          "role": "user",
+          "content": "Tìm repo về LangChain viết bằng TypeScript"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_search",
+            "args": {
+              "query": "LangChain",
+              "language": "TypeScript"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "github_search",
+            "args": {
+              "query": "LangChain",
+              "language": "typescript"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "github_search",
+          "args": {
+            "query": "LangChain",
+            "language": "typescript"
+          },
+          "result": {
+            "tool": "github_search",
+            "query": "LangChain",
+            "total_count": 8529,
+            "items": [
+              {
+                "name": "FlowiseAI/Flowise",
+                "url": "https://github.com/FlowiseAI/Flowise",
+                "description": "Build AI Agents, Visually",
+                "stars": 55564,
+                "language": "TypeScript"
+              },
+              {
+                "name": "LibreChat-AI/LibreChat",
+                "url": "https://github.com/LibreChat-AI/LibreChat",
+                "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
+                "stars": 46916,
+                "language": "TypeScript"
+              },
+              {
+                "name": "langfuse/langfuse",
+                "url": "https://github.com/langfuse/langfuse",
+                "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
+                "stars": 37223,
+                "language": "TypeScript"
+              },
+              {
+                "name": "reworkd/AgentGPT",
+                "url": "https://github.com/reworkd/AgentGPT",
+                "description": "🤖 Assemble, configure, and deploy autonomous AI Agents in your browser.",
+                "stars": 36262,
+                "language": "TypeScript"
+              },
+              {
+                "name": "NVIDIA/NemoClaw",
+                "url": "https://github.com/NVIDIA/NemoClaw",
+                "description": "Run agents like Hermes, LangChain Deep Agents, and OpenClaw more securely inside NVIDIA OpenShell with managed inference",
+                "stars": 22999,
+                "language": "TypeScript"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "GM03_clarify_then_currency",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_carryover_currency",
+        "difficulty": "medium",
+        "what_it_tests": "Kế thừa amount=100 và from_currency=EUR sang to_currency=JPY"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Đổi 100 EUR sang tiền Việt Nam"
+        },
+        {
+          "role": "assistant",
+          "content": "100 EUR tương đương khoảng 2,700,000 VND."
+        },
+        {
+          "role": "user",
+          "content": "Thế nếu đổi sang JPY (Yên Nhật) thì được bao nhiêu?"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "currency_convert",
+            "args": {
+              "amount": 100,
+              "from_currency": "EUR",
+              "to_currency": "JPY"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "currency_convert",
+            "args": {
+              "from_currency": "EUR",
+              "to_currency": "JPY",
+              "amount": 100
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "currency_convert",
+          "args": {
+            "from_currency": "EUR",
+            "to_currency": "JPY",
+            "amount": 100
+          },
+          "result": {
+            "tool": "currency_convert",
+            "amount": 100.0,
+            "from_currency": "EUR",
+            "to_currency": "JPY",
+            "converted_amount": 16615.3846,
+            "rate": 166.153846,
+            "status": "success"
+          }
+        }
+      ]
+    },
+    {
+      "id": "GM04_switch_from_web_to_twitter",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_switch_web_to_twitter",
+        "difficulty": "medium",
+        "what_it_tests": "Chuyển đổi nguồn từ web sang Twitter với search_type=Top"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm tin tức về DeepSeek trên web"
+        },
+        {
+          "role": "assistant",
+          "content": "Dưới đây là tin tức DeepSeek..."
+        },
+        {
+          "role": "user",
+          "content": "Chuyển sang tìm trên Twitter xem các tweet hot nhất bàn gì về DeepSeek"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "DeepSeek",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "search_type": "Top",
+              "query": "DeepSeek"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "social_search",
+          "args": {
+            "search_type": "Top",
+            "query": "DeepSeek"
+          },
+          "result": {
+            "tool": "search_tweets",
+            "error": "RuntimeError",
+            "message": "Missing RAPIDAPI_KEY env var"
+          }
+        }
+      ]
+    },
+    {
+      "id": "GM05_clarify_confirm_then_send",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_confirm_then_send",
+        "difficulty": "hard",
+        "what_it_tests": "Sau khi user đã xác nhận -> gọi send với confirmed=true"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Gửi bản tóm tắt này lên kênh Telegram giúp mình"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn có chắc chắn muốn gửi nội dung này lên kênh Telegram không?"
+        },
+        {
+          "role": "user",
+          "content": "Đúng rồi, mình xác nhận gửi đi nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "confirmed": true
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "text": "Bản tóm tắt tin tức đã được xác nhận và sẵn sàng gửi lên Telegram. (Nội dung bản tóm tắt từ các lượt trao đổi trước)",
+              "confirmed": true
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "send",
+          "args": {
+            "text": "Bản tóm tắt tin tức đã được xác nhận và sẵn sàng gửi lên Telegram. (Nội dung bản tóm tắt từ các lượt trao đổi trước)",
+            "confirmed": true
+          },
+          "result": {
+            "tool": "send_telegram",
+            "error": "RuntimeError",
+            "message": "Missing TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID env var"
+          }
+        }
+      ]
+    }
+  ]
+}

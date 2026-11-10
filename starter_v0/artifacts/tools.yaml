@@ -123,3 +123,34 @@ tools:
         max_pages: {type: integer, default: 5, description: "Số trang"}
         max_chars: {type: integer, default: 8000, description: "Số ký tự"}
       required: [arxiv_url]
+
+  # ---------------- Student Bonus Tools ----------------
+  - name: crypto_price
+    description: "Tra cứu giá thời gian thực và biến động 24h của đồng tiền mã hóa (Bitcoin, Ethereum, Solana, v.v.). Dùng khi người dùng hỏi về giá coin/crypto hiện tại."
+    parameters:
+      type: object
+      properties:
+        symbol: {type: string, default: "", description: "Mã ký hiệu tiền mã hóa (ví dụ: 'BTC', 'ETH', 'SOL')."}
+        currency: {type: string, enum: [USD, USDT, VND], default: "USD", description: "Đơn vị tiền tệ hiển thị giá."}
+      required: [symbol]
+
+  - name: github_search
+    description: "Tìm kiếm các kho lưu trữ (repository) mã nguồn mở trên GitHub. Dùng khi người dùng tìm kiếm dự án, repo mã nguồn trên GitHub theo từ khóa hoặc ngôn ngữ."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Từ khóa tìm kiếm repo GitHub."}
+        language: {type: string, default: "", description: "Ngôn ngữ lập trình (ví dụ: 'python', 'rust', 'typescript')."}
+        sort: {type: string, enum: [stars, updated, forks], default: "stars", description: "Tiêu chí sắp xếp kết quả."}
+        limit: {type: integer, default: 5, description: "Số lượng repository cần trả về."}
+      required: [query]
+
+  - name: currency_convert
+    description: "Quy đổi tỷ giá ngoại tệ quốc tế giữa các loại tiền tệ (USD, VND, EUR, JPY, GBP, CNY). Dùng khi người dùng cần đổi tiền hoặc tính toán giá trị tương đương."
+    parameters:
+      type: object
+      properties:
+        amount: {type: number, default: 1.0, description: "Số tiền cần quy đổi."}
+        from_currency: {type: string, default: "USD", description: "Mã tiền tệ gốc (ví dụ: 'USD', 'EUR', 'VND')."}
+        to_currency: {type: string, default: "VND", description: "Mã tiền tệ đích cần chuyển sang."}
+      required: [amount, from_currency, to_currency]

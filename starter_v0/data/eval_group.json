@@ -2,6 +2,293 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_crypto_price_btc",
+      "phase": "B",
+      "suite": "group",
+      "query": "Giá Bitcoin hôm nay là bao nhiêu USD?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "crypto_price",
+            "args": {
+              "symbol": "BTC",
+              "currency": "USD"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "new_tool_crypto",
+        "difficulty": "easy",
+        "what_it_tests": "Tra cứu giá Bitcoin -> route đúng tool crypto_price với symbol=BTC"
+      }
+    },
+    {
+      "id": "G02_github_search_python_agent",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm kiếm các repository AI agent viết bằng Python trên GitHub",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_search",
+            "args": {
+              "query": "AI agent",
+              "language": "python"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "new_tool_github",
+        "difficulty": "easy",
+        "what_it_tests": "Tìm repo GitHub -> route github_search với query và language=python"
+      }
+    },
+    {
+      "id": "G03_currency_convert_usd_vnd",
+      "phase": "B",
+      "suite": "group",
+      "query": "Đổi 50 USD sang VND được bao nhiêu tiền?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "currency_convert",
+            "args": {
+              "amount": 50,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "new_tool_currency",
+        "difficulty": "easy",
+        "what_it_tests": "Quy đổi ngoại tệ -> route currency_convert với amount=50"
+      }
+    },
+    {
+      "id": "G04_out_of_scope_cooking",
+      "phase": "B",
+      "suite": "group",
+      "query": "Hướng dẫn mình cách nấu món phở bò truyền thống tại nhà",
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "skill": "boundary_out_of_scope",
+        "difficulty": "easy",
+        "what_it_tests": "Công thức nấu ăn ngoài phạm vi research tools -> no_tool"
+      }
+    },
+    {
+      "id": "G05_unnecessary_tool_math",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tính căn bậc hai của 144 và giải thích",
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "skill": "boundary_math",
+        "difficulty": "easy",
+        "what_it_tests": "Tính toán cơ bản -> no_tool"
+      }
+    },
+    {
+      "id": "GM01_clarify_then_crypto",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Cho mình xem giá coin này với"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn muốn xem giá của đồng coin nào? Vui lòng cung cấp ký hiệu (ví dụ: BTC, ETH)."
+        },
+        {
+          "role": "user",
+          "content": "Xem giá đồng Ethereum (ETH) nhé"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "crypto_price",
+            "args": {
+              "symbol": "ETH"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_clarify_then_crypto",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 1 thiếu symbol, lượt 2 bổ sung ETH -> route crypto_price symbol=ETH"
+      }
+    },
+    {
+      "id": "GM02_clarify_then_github",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm repo trên GitHub giúp mình"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn muốn tìm repository về chủ đề gì?"
+        },
+        {
+          "role": "user",
+          "content": "Tìm repo về LangChain viết bằng TypeScript"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_search",
+            "args": {
+              "query": "LangChain",
+              "language": "TypeScript"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_clarify_then_github",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 1 thiếu query, lượt 2 bổ sung -> route github_search"
+      }
+    },
+    {
+      "id": "GM03_clarify_then_currency",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Đổi 100 EUR sang tiền Việt Nam"
+        },
+        {
+          "role": "assistant",
+          "content": "100 EUR tương đương khoảng 2,700,000 VND."
+        },
+        {
+          "role": "user",
+          "content": "Thế nếu đổi sang JPY (Yên Nhật) thì được bao nhiêu?"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "currency_convert",
+            "args": {
+              "amount": 100,
+              "from_currency": "EUR",
+              "to_currency": "JPY"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_carryover_currency",
+        "difficulty": "medium",
+        "what_it_tests": "Kế thừa amount=100 và from_currency=EUR sang to_currency=JPY"
+      }
+    },
+    {
+      "id": "GM04_switch_from_web_to_twitter",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tin tức về DeepSeek trên web"
+        },
+        {
+          "role": "assistant",
+          "content": "Dưới đây là tin tức DeepSeek..."
+        },
+        {
+          "role": "user",
+          "content": "Chuyển sang tìm trên Twitter xem các tweet hot nhất bàn gì về DeepSeek"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "DeepSeek",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_switch_web_to_twitter",
+        "difficulty": "medium",
+        "what_it_tests": "Chuyển đổi nguồn từ web sang Twitter với search_type=Top"
+      }
+    },
+    {
+      "id": "GM05_clarify_confirm_then_send",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Gửi bản tóm tắt này lên kênh Telegram giúp mình"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn có chắc chắn muốn gửi nội dung này lên kênh Telegram không?"
+        },
+        {
+          "role": "user",
+          "content": "Đúng rồi, mình xác nhận gửi đi nhé"
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "confirmed": true
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_confirm_then_send",
+        "difficulty": "hard",
+        "what_it_tests": "Sau khi user đã xác nhận -> gọi send với confirmed=true"
+      }
+    }
+  ]
 }
