@@ -12,6 +12,11 @@ from __future__ import annotations
 
 import pytest
 
+from conftest import FakeResponse
+from tools import TOOL_FUNCTIONS
+
+semantic_scholar_tool = TOOL_FUNCTIONS["semantic_scholar"]
+
 from conftest import FakeResponse  # noqa: F401  (you will need it)
 from tools import TOOL_FUNCTIONS  # noqa: F401
 
@@ -109,14 +114,70 @@ def test_policy_instruction_like_lines_go_to_untrusted_text() -> None:
 #   1. happy path (mocked if it calls an API)
 #   2. bad / missing input from the model (empty string, wrong type, out-of-enum value)
 #   3. failure path (missing key, HTTP error, timeout) -> returns error dict, does not raise
+# ---------------- SEMANTIC SCHOLAR ----------------
 
-def test_my_new_tool_happy_path() -> None:
-    pytest.skip(TODO)
+def test_semantic_scholar_happy_path(monkeypatch, fake_http) -> None:
+    calls = fake_http(FakeResponse({
+        "total": 125,
+        "data": [
+            {
+                "paperId": "paper-123",
+                "title": "Attention Is All You Need",
+                "authors": [
+                    {"name": "Ashish Vaswani"},
+                    {"name": "Noam Shazeer"},
+                ],
+                "year": 2017,
+                "abstract": "We propose a new architecture...",
+                "citationCount": 100000,
+                "url": "https://www.semanticscholar.org/paper/paper-123",
+                "externalIds": {"ArXiv": "1706.03762"},
+            }
+        ],
+    }))
+
+    result = semantic_scholar_tool(
+        query="transformer architecture",
+        max_results=3,
+    )
+
+    assert calls[0]["url"] == (
+        "https://api.semanticscholar.org/graph/v1/paper/search"
+    )
+    assert calls[0]["params"]["query"] == "transformer architecture"
+    assert calls[0]["params"]["limit"] == 3
+    assert "title" in calls[0]["params"]["fields"]
+    assert "citationCount" in calls[0]["params"]["fields"]
+
+    assert result["tool"] == "semantic_scholar_search"
+    assert result["total_results"] == 125
+    assert result["items"][0] == {
+        "paper_id": "paper-123",
+        "title": "Attention Is All You Need",
+        "authors": ["Ashish Vaswani", "Noam Shazeer"],
+        "year": 2017,
+        "abstract": "We propose a new architecture...",
+        "citation_count": 100000,
+        "url": "https://www.semanticscholar.org/paper/paper-123",
+        "arxiv_id": "1706.03762",
+        "source": "semanticscholar.org",
+    }
 
 
-def test_my_new_tool_bad_input_from_model() -> None:
-    pytest.skip(TODO)
+def test_semantic_scholar_rejects_bad_input() -> None:
+    result = semantic_scholar_tool(query="   ")
+
+    assert result["error"] == "ValueError"
+    assert "query" in result["message"]
 
 
-def test_my_new_tool_failure_returns_error_dict() -> None:
-    pytest.skip(TODO)
+def test_semantic_scholar_http_error_returns_error_dict(
+    fake_http,
+) -> None:
+    fake_http(FakeResponse(status_code=429))
+
+    result = semantic_scholar_tool(query="large language models")
+
+    assert result["tool"] == "semantic_scholar_search"
+    assert result["error"] == "HTTPError"
+

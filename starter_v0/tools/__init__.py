@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+from .semantic_scholar.tool import semantic_scholar_search
 from pathlib import Path
 from typing import Any
 
@@ -35,6 +35,7 @@ TOOL_FUNCTIONS = {
     "policy": search_company_policy,
     "papers": arxiv_search,
     "paper_text": get_arxiv_paper_text,
+    "semantic_scholar": semantic_scholar_search,
     # TODO(student): register your new tool here, e.g. "my_tool": my_tool_function,
     # then declare it in artifacts/tools.yaml and run `pytest tests/test_tool_contract.py`.
 }

@@ -1,7 +1,71 @@
+
 {
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "B_SEMANTIC_001",
+      "phase": "B",
+      "query": "Find 5 recent academic papers on Vision Transformers, preferably from peer-reviewed conferences or journals. Include their abstracts and citation counts.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "semantic_scholar",
+            "args": {
+              "query": "Vision Transformers",
+              "max_results": 5
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "semantic_scholar_search",
+        "difficulty": "medium",
+        "what_it_tests": "Academic literature discovery requiring abstracts and citation counts should route to Semantic Scholar rather than arXiv-only search."
+      }
+    },
+    {
+      "id": "B_SEMANTIC_002",
+      "phase": "B",
+      "query": "Find research papers specifically on arXiv about Retrieval-Augmented Generation evaluation.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arxiv_search",
+        "difficulty": "medium",
+        "what_it_tests": "Explicit arXiv requirement should route to papers instead of semantic_scholar."
+      }
+    },
+    {
+      "id": "B_SEMANTIC_003",
+      "phase": "B",
+      "query": "Explain what a Vision Transformer is and how its self-attention mechanism works.",
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "skill": "general_ai_knowledge",
+        "difficulty": "easy",
+        "what_it_tests": "A conceptual question answerable using existing model knowledge should not trigger unnecessary academic search."
+      }
+    }
+  ]
 }
