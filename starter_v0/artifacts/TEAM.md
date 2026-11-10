@@ -6,7 +6,7 @@ Link repo nhóm: https://github.com/olivercuongnguyen-ca/K5-L3-DAY03-NguyenHoang
 
 | STT | Họ và tên | MSSV | Phân công |
 |---:|---|---|---|
-| 1 | Nguyễn Hoàng Cương | 2A202603568 | Trưởng nhóm · Tổng hợp bài nộp, thử nghiệm provider TokenHarbor, UI HTML (`ui_server.py`), eval nhóm |
+| 1 | Nguyễn Hoàng Cương | 2A202603568 | Trưởng nhóm - Tổng hợp bài nộp, thử nghiệm provider TokenHarbor, UI HTML (`ui_server.py`), eval nhóm |
 | 2 | Bùi Văn Lâm | 2A202603400 | 3 tool mới (`crypto_price`, `github_search`, `currency_convert`), UI Streamlit (`app.py`), tune prompt v0–v3, `REPORT.md` |
 | 3 | Phan Bá An | 2A202603375 | Tool `semantic_scholar`, unit test, eval case, viết lại `tools.yaml` và prompt |
 | 4 | Đỗ Minh Hiếu | 2A202603402 | Tool `cite`, provider DeepSeek, thí nghiệm tune prompt/tool v1–v3 (v2b–v2g) |
