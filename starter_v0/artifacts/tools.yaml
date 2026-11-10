@@ -154,3 +154,24 @@ tools:
         from_currency: {type: string, default: "USD", description: "Mã tiền tệ gốc (ví dụ: 'USD', 'EUR', 'VND')."}
         to_currency: {type: string, default: "VND", description: "Mã tiền tệ đích cần chuyển sang."}
       required: [amount, from_currency, to_currency]
+
+  - name: semantic_scholar
+    description: >
+      Search academic papers using Semantic Scholar.
+      Use for scientific literature discovery and research topics,
+      especially when the user wants papers beyond arXiv.
+      Returns paper titles, authors, publication years, abstracts,
+      citation counts, and paper URLs.
+      Use papers for arXiv-specific search and paper_text
+      to retrieve the content of a specific arXiv paper.
+    parameters:
+      type: object
+      properties:
+        query:
+          type: string
+          description: Research topic, keywords, or scientific question.
+        max_results:
+          type: integer
+          default: 5
+          description: Maximum number of papers to retrieve (1-10).
+      required: [query]

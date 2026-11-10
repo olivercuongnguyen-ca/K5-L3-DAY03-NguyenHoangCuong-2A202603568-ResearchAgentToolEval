@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 from pathlib import Path
 from typing import Any
 
@@ -18,6 +17,7 @@ from .social_search.tool import search_tweets
 from .send.tool import send_telegram
 from .lookup.tool import web_search
 from .crypto_price.tool import get_crypto_price
+from .semantic_scholar.tool import semantic_scholar_search
 from .github_search.tool import search_github_repos
 from .currency_convert.tool import convert_currency
 
@@ -41,6 +41,7 @@ TOOL_FUNCTIONS = {
     "crypto_price": get_crypto_price,
     "github_search": search_github_repos,
     "currency_convert": convert_currency,
+    "semantic_scholar": semantic_scholar_search,
 }
 
 
