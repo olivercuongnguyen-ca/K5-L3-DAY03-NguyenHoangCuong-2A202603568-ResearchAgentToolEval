@@ -1,0 +1,32 @@
+# Thành viên nhóm · Day 04
+
+Tên nhóm: 
+Lớp (L3A hoặc L3B): 
+Link repo nhóm: https://github.com/olivercuongnguyen-ca/K5-L3-DAY03-NguyenHoangCuong-2A202603568-ResearchAgentToolEval
+
+| STT | Họ và tên | MSSV | Phân công |
+|---:|---|---|---|
+| 1 |  |  | Trưởng nhóm · |
+| 2 | Do Minh Hieu | 2A202603402 | Tối ưu prompt và tool (v0-v3), tool `cite`, UI Streamlit |
+| 3 |  |  |  |
+
+Gợi ý chia việc: TODO 1 và 2, TODO 3, chạy eval và đọc trace, 2 thí nghiệm và `REFLECTION.md`.
+
+# Cá nhân
+
+Mỗi thành viên tự viết một mục theo mẫu dưới, đặt tiêu đề theo họ tên không dấu và MSSV của mình.
+
+## DoMinhHieu-2A202603402
+
+- Việc đã làm:
+  - Chạy baseline v0 và tối ưu prompt/tool qua v1 đến v3 trên DeepSeek. v2 có nhiều subedit, overall v0->v3 từ 0.4 -> 0.7 -> 0.8 -> 1.0
+  - Phân tích 11 case lỗi của v0 và ghi version log (REPORT B1, B2).
+  - Viết tool mới `cite` (TOOL.md, đăng ký, khai báo `tools.yaml`, 3 unit test) và thêm provider DeepSeek.
+  - Xây UI Streamlit `app.py`, viết 3 eval case nhóm, điền REPORT Part A và B1 đến B5.
+- Commit hoặc file thể hiện phần việc đó: nhánh `dominhhieu`, commit `0d1b414`: `artifacts/system_prompt.md`, `artifacts/tools.yaml`, `artifacts/version_log.csv`, `artifacts/REPORT.md`, `tools/cite/`, `tests/test_tools_todo.py`, `providers/deepseek_provider.py`, `app.py`, `runs/`, `transcripts/`.
+- Điều đã học:
+  - Model sao chép dạng của ví dụ trong mô tả của tool nên ví dụ Đúng/Sai phải khớp dạng mong muốn (keyword ngắn, preferable 1-2 từ, không thêm từ thừa).
+  - Phải prompt rõ ưu tiên quy tắc xác nhận trước khi gửi file, priority phải cao hơn hỏi missing context/information.  
+  - Mỗi version chỉ nên đổi một thứ để dễ tracking; v2f và v2g đổi cả prompt và tools nên không tách được tác động của từng thay đổi, dẫn đến kết quả tương tự nhau.
+  - Eval case phải suy ra được hoàn toàn từ câu của người dùng, nếu không agent hỏi lại là đúng còn case thì sai.
+- Còn thiếu: 14 test stub còn skip và mới có 3 trong 10 eval case nhóm.
