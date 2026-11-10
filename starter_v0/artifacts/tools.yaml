@@ -16,22 +16,22 @@
 tools:
   # ---------------- Core tools ----------------
   - name: clarify
-    description: "Gửi một câu hỏi cho người dùng."
+    description: "Gửi một câu hỏi cho người dùng để làm rõ thông tin."
     parameters:
       type: object
       properties:
-        question: {type: string, default: "", description: "Câu hỏi"}
-        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Kiểu trả lời"}
+        question: {type: string, default: "", description: "Câu hỏi cần làm rõ"}
+        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Kiểu trả lời mong muốn"}
         options: {type: array, default: [], items: {type: string}, description: "Các lựa chọn"}
       required: [question]
 
   - name: timeline
-    description: "Lấy các bài đăng gần đây."
+    description: "Lấy các bài đăng gần đây trên trang cụ thể."
     parameters:
       type: object
       properties:
         screenname: {type: string, default: "", description: "Tên tài khoản"}
-        limit: {type: integer, default: 5, description: "Số lượng"}
+        limit: {type: integer, default: 5, description: "Số lượng bài đăng"}
       required: [screenname]
 
   - name: social_search
@@ -39,19 +39,19 @@ tools:
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Từ khóa"}
+        query: {type: string, default: "", description: "Chỉ chủ đề/topic tìm kiếm. Không dịch, không đổi từ ngữ của user. Không có động từ hay từ chỉ yêu cầu. Đúng: 'Facebook', 'Twitter', 'biến đổi khí hậu'. Sai: 'Báo chí nói gì về AI tuần này?'."}
         search_type: {type: string, enum: [Latest, Top], default: "Latest", description: "Cách sắp xếp"}
         limit: {type: integer, default: 5, description: "Số lượng"}
       required: [query]
 
   - name: lookup
-    description: "Tra cứu thông tin trên internet."
+    description: "Tra cứu thông tin trên internet. Dùng khi bạn cần thông tin từ nhiều nguồn, không chỉ mạng xã hội. Không dùng cho các truy vấn chuyên sâu (dùng `papers` hoặc `policy` thay thế)."
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Truy vấn"}
-        topic: {type: string, enum: [general, news], default: "general", description: "Phân loại"}
-        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "Khoảng thời gian"}
+        query: {type: string, default: "", description: "Chỉ chủ đề/topic tìm kiếm. Không dịch, không đổi từ ngữ của user. Không có động từ hay từ chỉ yêu cầu, tin tức, thời gian. Đúng: 'facebook', 'twitter', 'thay đổi thời tiết'. Sai: 'tin tức công nghệ tuần qua'."}
+        topic: {type: string, enum: [general, news], default: "general", description: "Phân loại truy vấn"}
+        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "Khoảng thời gian cần tìm kiếm cụ thể"}
         max_results: {type: integer, default: 5, description: "Số kết quả"}
       required: [query]
 
@@ -123,3 +123,13 @@ tools:
         max_pages: {type: integer, default: 5, description: "Số trang"}
         max_chars: {type: integer, default: 8000, description: "Số ký tự"}
       required: [arxiv_url]
+
+  - name: cite
+    description: "Tạo trích dẫn cho một bài báo hoặc một trang web."
+    parameters: 
+      type: object
+      properties:
+        url: {type: string, default: "", description: "Địa chỉ trang web hoặc bài báo"}
+        style: {type: string, enum: [apa, harvard], default: "apa", description: "Phong cách trích dẫn"}
+      required: [url]
+

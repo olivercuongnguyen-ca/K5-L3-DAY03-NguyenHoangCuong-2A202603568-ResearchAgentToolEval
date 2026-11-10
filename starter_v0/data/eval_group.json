@@ -2,6 +2,100 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_cite_with_url",
+      "phase": "B",
+      "query": "Trích dẫn giúp mình bài này theo APA: https://arxiv.org/abs/1706.03762",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "cite",
+            "args": {
+              "url": "https://arxiv.org/abs/1706.03762",
+              "style": "apa"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Yêu cầu trích dẫn có URL → gọi cite với đúng url và style=apa."
+      }
+    },
+    {
+      "id": "G06_multi_carry_topic",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tin NVIDIA hôm nay có gì?"
+        },
+        {
+          "role": "user",
+          "content": "Đổi sang Vinfast nhé"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn là tin hôm nay"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Vinfast",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "3 turns: đổi chủ đề sang Vinfast, giữ topic=news và timeframe=day."
+      }
+    },
+    {
+      "id": "G10_multi_confirm_before_send",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tóm tắt tin NVIDIA hôm nay giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Tạm ổn"
+        },
+        {
+          "role": "user",
+          "content": "Đăng bản tin đó lên Telegram nhé"
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "3 turns: yêu cầu đăng Telegram → xác nhận yes_no trước, không gọi send."
+      }
+    }
+  ]
 }

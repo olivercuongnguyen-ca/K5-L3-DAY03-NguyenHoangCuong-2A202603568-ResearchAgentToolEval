@@ -110,13 +110,14 @@ def test_policy_instruction_like_lines_go_to_untrusted_text() -> None:
 #   2. bad / missing input from the model (empty string, wrong type, out-of-enum value)
 #   3. failure path (missing key, HTTP error, timeout) -> returns error dict, does not raise
 
-def test_my_new_tool_happy_path() -> None:
-    pytest.skip(TODO)
+# ---------------- cite (cited sources) ----------------
+def test_my_new_tool_cite_happy_path():
+    assert "cited" in TOOL_FUNCTIONS["cite"](url="https://example.com/paper", style="apa")["result"]
 
+def test_my_new_tool_cite_bad_input_from_model():
+    result = TOOL_FUNCTIONS["cite"](url="", style="invalid_style")
+    assert "error" in result["result"]
 
-def test_my_new_tool_bad_input_from_model() -> None:
-    pytest.skip(TODO)
-
-
-def test_my_new_tool_failure_returns_error_dict() -> None:
-    pytest.skip(TODO)
+def test_my_new_tool_cite_failure_returns_error_dict():
+    result = TOOL_FUNCTIONS["cite"](url="yandex.ru", style="apa")  # Invalid URL format
+    assert "error" in result["result"]
