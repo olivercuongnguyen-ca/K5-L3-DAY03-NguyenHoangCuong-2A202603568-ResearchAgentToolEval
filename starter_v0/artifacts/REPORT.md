@@ -69,7 +69,9 @@ Dữ liệu thực tế trích xuất từ [artifacts/version_log.csv](version_l
 | **v2** | `tools.yaml` | Siết chặt mô tả tham số, lọc bỏ từ thừa trong query tin tức và ràng buộc `yes_no` | 75.00% | **95.00%** | `runs/v2_B_base_gemini_20261110T112952778253.json` |
 | **v3** | `system_prompt.md` | Bổ sung Negative Rules + Input Boundary + Tư duy song song `<thinking>` | 95.00% | **100.0%** | `runs/v3_B_base_gemini_20261110T113458656163.json` |
 
-> Bảng trên là chuỗi v0–v3 chính (Gemini, 13 tool). Sau khi gộp công việc của cả nhóm, `tools.yaml` có thêm `semantic_scholar` và `cite` (15 tool), nên các số liệu trên chưa được chạy lại với bộ tool mới.
+| **v4** | Gộp nhánh: `tools.yaml` thêm `semantic_scholar`, `cite` (15 tool) | Thêm 2 tool của An và Hiếu không làm giảm routing so với bộ 13 tool | 100.0% | **100.0%** (20/20) | `runs/v4_B_base_gemini_20261110T233420510269.json` |
+
+> `v4` là lần chạy lại sau khi gộp công việc cả nhóm (cùng provider Gemini `gemini-3.5-flash-lite`, 15 tool). Nhóm eval riêng được chạy cùng lúc, xem B3.
 
 **Các chuỗi thí nghiệm khác trong `version_log.csv`** (tiền tố `DMH-` / `NHC-`, đo trên bộ eval base 20 case của từng provider):
 
@@ -92,7 +94,7 @@ Phân tích các lỗi thực tế trong file log của `v0` và `v1` cùng bi�
 
 ## B3. Team Eval Cases
 
-Danh sách 10 cases tự xây dựng thêm trong [data/eval_group.json](../data/eval_group.json) (đạt kết quả **10/10 PASS - 100%** trong run `runs/v3_B_group_gemini_20261110T114443599509.json`):
+Danh sách 10 cases của Lâm trong [data/eval_group.json](../data/eval_group.json). Kết quả ban đầu **10/10 PASS** (run `runs/v3_B_group_gemini_20261110T114443599509.json`); chạy lại sau khi gộp (`v4`) vẫn **10/10 PASS**:
 
 | Case ID | What It Tests | Expected Tool/Behavior | Result |
 |---|---|---|---|
@@ -107,7 +109,9 @@ Danh sách 10 cases tự xây dựng thêm trong [data/eval_group.json](../data/
 | `GM04_switch_from_web_to_twitter` | Đa lượt: Chuyển đổi công cụ tra cứu từ web sang tìm tweet hot | `social_search(query='DeepSeek', search_type='Top')` | **PASS** |
 | `GM05_clarify_confirm_then_send` | Đa lượt: Xác nhận người dùng trước khi gửi thông báo Telegram | `send(confirmed=true)` | **PASS** |
 
-**Các case bổ sung từ thành viên khác** (đã gộp vào cùng file, tổng cộng 26 case; run nhóm riêng: `runs/v3_B_group_deepseek_...`, `runs/v4_B_group_tokenharbor_...`):
+**Kết quả chạy lại toàn bộ 26 case nhóm (`v4`, Gemini):** `runs/v4_B_group_gemini_20261110T233616572518.json` — **25/26 PASS (96.15%)**, routing 100%, argument 96.15%, multi-turn 91.67%. Case duy nhất FAIL là `M07_paper_then_sort` (`wrong_arg_value`): ở lượt 2 model gọi đúng `papers(sort_by='submittedDate')` nhưng mở rộng `query` thành `'Retrieval-Augmented Generation RAG'` thay vì giữ `'RAG'` như case kỳ vọng. Đây là lỗi tham số, không phải lỗi routing; chưa sửa prompt để tránh làm lệch kết quả đã chạy.
+
+**Các case bổ sung từ thành viên khác** (đã gộp vào cùng file, tổng cộng 26 case; run nhóm riêng của họ: `runs/v3_B_group_deepseek_...`, `runs/v4_B_group_tokenharbor_...`):
 
 | Thành viên | Case | Nội dung kiểm tra |
 |---|---|---|
