@@ -1,7 +1,7 @@
 # Thành viên nhóm · Day 04
 
 Tên nhóm: 
-Lớp (L3A hoặc L3B): 
+Lớp (L3A hoặc L3B): L3A
 Link repo nhóm: https://github.com/olivercuongnguyen-ca/K5-L3-DAY03-NguyenHoangCuong-2A202603568-ResearchAgentToolEval
 
 | STT | Họ và tên | MSSV | Phân công |
