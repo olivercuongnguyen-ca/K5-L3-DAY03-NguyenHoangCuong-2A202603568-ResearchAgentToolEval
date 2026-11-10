@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 03 Lab v2 — Research Agent Showcase Poster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --primary: #3b82f6;
+      --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --mono-font: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .poster {
+      max-width: 1200px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px 36px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+
+    .header-left h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .header-left p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .team-badge {
+      text-align: right;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      padding: 8px 16px;
+      border-radius: 10px;
+    }
+
+    .team-badge .member {
+      font-weight: 700;
+      font-size: 15px;
+      color: #93c5fd;
+    }
+
+    .team-badge .model {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--mono-font);
+    }
+
+    /* Metric Grid */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .metric-card {
+      background: rgba(31, 41, 55, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+    }
+
+    .metric-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .metric-value.highlight {
+      color: var(--accent-green);
+    }
+
+    .metric-sub {
+      font-size: 12px;
+      color: #6ee7b7;
+      font-weight: 600;
+    }
+
+    /* Content Layout */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #e5e7eb;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    /* Tool Tags */
+    .tool-group {
+      margin-bottom: 14px;
+    }
+
+    .tool-group-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-family: var(--mono-font);
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tag-core {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: rgba(59, 130, 246, 0.3);
+      color: #93c5fd;
+    }
+
+    .tag-bonus {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: rgba(139, 92, 246, 0.3);
+      color: #c4b5fd;
+    }
+
+    .tag-new {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #6ee7b7;
+      font-weight: 600;
+    }
+
+    /* Challenge Questions List */
+    .question-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .question-item {
+      background: rgba(31, 41, 55, 0.4);
+      border: 1px solid rgba(75, 85, 99, 0.3);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .question-text {
+      color: #f3f4f6;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .question-eval {
+      color: #9ca3af;
+      font-size: 12px;
+      font-family: var(--mono-font);
+    }
+
+    /* Key Architecture Points */
+    .arch-banner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      background: rgba(31, 41, 55, 0.4);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .arch-item h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #60a5fa;
+      margin-bottom: 4px;
+    }
+
+    .arch-item p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .live-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-family: var(--mono-font);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <h1>Research Agent Tool Eval — Day 03 Lab v2</h1>
+        <p>Evidence-Driven Autonomous Research Agent with Parallel Tool Calling & Human-in-the-Loop Guardrail</p>
+      </div>
+      <div class="team-badge">
+        <div class="member">Bùi Văn Lâm</div>
+        <div class="model">Gemini 3.5 Flash Lite</div>
+      </div>
+    </div>
+
+    <!-- Top Metrics -->
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-title">Case Accuracy (Base)</div>
+        <div class="metric-value highlight">100.0%</div>
+        <div class="metric-sub">20/20 PASS (v0: 53.3% → v3: 100%)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Team Eval (Group)</div>
+        <div class="metric-value highlight">10/10</div>
+        <div class="metric-sub">5 Single-turn + 5 Multi-turn PASS</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Unit Test Suite</div>
+        <div class="metric-value highlight">100 / 100</div>
+        <div class="metric-sub">0 Failed, 0 Skipped (0.42s)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Total Tools Built</div>
+        <div class="metric-value" style="color: #60a5fa;">13 Tools</div>
+        <div class="metric-sub">6 Core + 4 Bonus + 3 Student Tools</div>
+      </div>
+    </div>
+
+    <!-- Content Columns -->
+    <div class="content-grid">
+      <!-- Left: Tools & Capabilities -->
+      <div class="card">
+        <div class="section-title">🛠️ Công cụ Agent hỗ trợ (Tools Inventory)</div>
+        
+        <div class="tool-group">
+          <div class="tool-group-label">🌟 3 Tool mới tự xây dựng (Student Bonus Track)</div>
+          <div class="tag-container">
+            <span class="tag tag-new">⚡ crypto_price</span>
+            <span class="tag tag-new">⚡ github_search</span>
+            <span class="tag tag-new">⚡ currency_convert</span>
+          </div>
+        </div>
+
+        <div class="tool-group">
+          <div class="tool-group-label">🔷 Bonus Tools có sẵn</div>
+          <div class="tag-container">
+            <span class="tag tag-bonus">🛡️ send (telegram + guardrail)</span>
+            <span class="tag tag-bonus">📄 policy (boundary isolation)</span>
+            <span class="tag tag-bonus">📚 papers (arXiv search)</span>
+            <span class="tag tag-bonus">📑 paper_text (PDF extract)</span>
+          </div>
+        </div>
+
+        <div class="tool-group">
+          <div class="tool-group-label">⚪ Core Research Tools</div>
+          <div class="tag-container">
+            <span class="tag tag-core">❓ clarify</span>
+            <span class="tag tag-core">🐦 timeline</span>
+            <span class="tag tag-core">🔍 social_search</span>
+            <span class="tag tag-core">🌐 lookup</span>
+            <span class="tag tag-core">🔗 fetch</span>
+            <span class="tag tag-core">📝 format</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+          <strong>🎯 Năng lực cốt lõi:</strong> Tra cứu tin tức web sạch (không bloat query), tìm bài đăng Twitter/X chính xác, đọc toàn văn URL, tra cứu giá crypto thời gian thực, tìm mã nguồn GitHub, đổi ngoại tệ quốc tế, kích hoạt song song đa nguồn và cơ chế xác nhận người dùng an toàn.
+        </div>
+      </div>
+
+      <!-- Right: Challenge Questions for Demo -->
+      <div class="card">
+        <div class="section-title">🚀 Câu hỏi mẫu để thử nghiệm (Showdown Demo)</div>
+        <ul class="question-list">
+          <li class="question-item">
+            <div class="question-text">1. "Giá Bitcoin hôm nay là bao nhiêu USD?"</div>
+            <div class="question-eval">→ crypto_price(symbol='BTC', currency='USD')</div>
+          </li>
+          <li class="question-item">
+            <div class="question-text">2. "Tìm repo AI agent bằng Python trên GitHub"</div>
+            <div class="question-eval">→ github_search(query='AI agent', language='python')</div>
+          </li>
+          <li class="question-item">
+            <div class="question-text">3. "Đổi 100 USD sang tiền Việt Nam (VND)"</div>
+            <div class="question-eval">→ currency_convert(amount=100, from='USD', to='VND')</div>
+          </li>
+          <li class="question-item">
+            <div class="question-text">4. "Tìm trên web tin AI hôm nay và tìm thêm tweet về AI"</div>
+            <div class="question-eval">→ Song song: lookup(query='AI', ...) & social_search(...)</div>
+          </li>
+          <li class="question-item">
+            <div class="question-text">5. "Gửi bản tin này lên kênh Telegram giúp tôi"</div>
+            <div class="question-eval">→ Guardrail: clarify(response_type='yes_no'), không tự ý gửi</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Architecture Highlights -->
+    <div class="arch-banner">
+      <div class="arch-item">
+        <h4>1. Cấu trúc Prompt XML Chuẩn Hóa</h4>
+        <p>Phân tách rõ <system_role>, <input_boundary>, <negative_rules>, <instructions> và <reasoning_process>.</p>
+      </div>
+      <div class="arch-item">
+        <h4>2. Chuỗi Tư Duy Song Song (&lt;thinking&gt;)</h4>
+        <p>Phân tích đa nguồn trước khi sinh output, loại bỏ thiếu sót khi yêu cầu vừa tìm web vừa tìm social.</p>
+      </div>
+      <div class="arch-item">
+        <h4>3. Rào chắn An toàn (Human-in-the-loop)</h4>
+        <p>Bảo vệ tuyệt đối hành động gửi tin bên ngoài: chỉ thực thi khi nhận cờ confirmed=true từ người dùng.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div>Giao diện tương tác Streamlit Studio: <code>app.py</code></div>
+      <div>Try-it Local URL: <a class="live-link" href="http://localhost:8501" target="_blank">http://localhost:8501</a></div>
+      <div>VinAI Research Agent — Day 03</div>
+    </div>
+  </div>
+</body>
+</html>
+
